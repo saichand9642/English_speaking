@@ -61,8 +61,11 @@ That link is your app.
 1. Paste your API key, tap **Save & start**
 2. Tap the gear icon and type your first language (for example *Telugu*) — this makes
    the pronunciation tips noticeably more useful
-3. Tap the microphone, say a sentence out loud, tap it again to stop
-4. Allow the microphone when Safari asks. This happens only the first time.
+3. Tap the microphone **once**. Allow the microphone when Safari asks — this
+   happens only the first time.
+4. Just talk. It works out when you have stopped speaking, replies out loud, and
+   then starts listening again on its own. You never tap between sentences.
+5. Tap the button again when you want to stop.
 
 If the microphone is ever refused, fix it in **Settings → Safari → Microphone →
 Allow**, then close and reopen the app.
@@ -73,18 +76,26 @@ Allow**, then close and reopen the app.
 
 Four tabs along the bottom.
 
-**Talk** — the main loop. Answer the prompt in two or three sentences. You get your
-sentence with the wrong parts struck through and the fixes highlighted inline, a
-plain-language reason for each, pronunciation notes for words that genuinely sounded
-unclear, and a spoken reply that asks you a follow-up question.
+**Talk** — the main loop, and it is hands-free. One tap starts the conversation and it
+keeps going by itself: it hears when you stop talking, answers, and starts listening
+again. It waits until it has finished speaking before it listens, so it never records
+its own voice. You get your sentence with the wrong parts struck through and the fixes
+highlighted inline, a plain-language reason for each, pronunciation notes for words
+that genuinely sounded unclear, and a spoken reply that asks a follow-up question.
 
-**Read** — a sentence chosen to exercise one specific sound (v/w, th, short and long
+If nobody speaks for about nine seconds it simply keeps waiting rather than dropping
+out. If the connection or the key fails, it stops the session and tells you, instead
+of retrying in a loop and eating your daily quota.
+
+**Read** — one tap, then read the sentence; it stops on its own when you finish. A
+sentence chosen to exercise one specific sound (v/w, th, short and long
 vowels, consonant clusters, rhythm). You read it, and every word is scored against
 the target. This is the most reliable pronunciation feedback in the app, because the
 sentence is known in advance, so a word coming back different is a real observation
 rather than a guess.
 
-**Drill** — re-tests the mistakes *you* actually made, on an SM-2 spaced-repetition
+**Drill** — one tap per answer, stopping automatically when you finish speaking.
+Re-tests the mistakes *you* actually made, on an SM-2 spaced-repetition
 schedule. Not random review: an error you repeat becomes due again immediately, so the
 habits that keep coming back are the ones you practise most. Peeking at the answer
 never counts as recall.
@@ -152,6 +163,13 @@ back tomorrow. Normal daily practice will not get near the limit.
 
 **Nothing happens when you tap record** — You opened the file directly instead of the
 `https://` link. The microphone needs the hosted address.
+
+**It stops listening after every sentence** — That is the old behaviour. Reload the
+page so Safari picks up the current version; iOS caches home-screen apps aggressively.
+
+**It seems to hear itself** — It waits for its own speech to finish before listening,
+but a loud speaker in a small room can still bleed through. Lower the volume or use
+earphones.
 
 **No sound comes back** — iOS silences speech until you have interacted with the page.
 Tap something once, then try again. Also check the ringer switch.

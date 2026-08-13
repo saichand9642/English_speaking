@@ -216,7 +216,7 @@
 <div class="bottom" id="bottom">
   <div class="recbar" id="recbar">
     <button class="mic" id="mic" aria-label="Record">&#127908;</button>
-    <div class="rechint" id="hint">Tap, speak a sentence, tap again</div>
+    <div class="rechint" id="hint">Tap once to start talking</div>
   </div>
   <div class="tabs" id="tabs">
     <button data-tab="talk" class="on"><span class="ic">&#127908;</span>Talk</button>
@@ -312,7 +312,7 @@ var cards   = readJson('ec_cards', []);
 var readIdx = parseInt(store.get('ec_readidx') || '0', 10) || 0;
 
 var tab = 'talk';
-var recorder = null, chunks = [], stream = null, recording = false, busy = false, timer = null, startedAt = 0;
+var busy = false, turnFailed = false;
 var drillQueue = [], drillPos = 0, drillResult = null, drillDone = 0, drillRevealed = false;
 
 function readJson(k, dflt){ try { return JSON.parse(store.get(k) || 'null') || dflt; } catch(e){ return dflt; } }
@@ -564,9 +564,36 @@ function showErr(el, msg){ var e = $(el); e.textContent = msg; e.classList.remov
 function clearErr(el){ $(el).classList.add('hide'); }
 function setHint(t){ $('hint').textContent = t; }
 
-$('mic').onclick = function(){ recording ? stopRec() : startRec(); };
+/* -------------------------------------------------------------------------
+   Hands-free turn taking.
 
-function startRec(){
+   One tap starts a conversation and it keeps going by itself: it works out
+   when you have stopped talking, answers, and then starts listening again.
+   Having to tap for every sentence breaks the illusion of a conversation,
+   which is the thing this app exists to create.
+
+   The microphone stream and the AudioContext are opened once per session and
+   kept alive. Reacquiring them each turn costs about a second on iOS and makes
+   the recording indicator flicker.
+   ------------------------------------------------------------------------- */
+var session = { active:false, continuous:false, stream:null, ctx:null, analyser:null, buf:null };
+var turn = { recorder:null, chunks:[], vad:null, startedAt:0, running:false };
+
+/* VAD settings, in the same units as the Android build. */
+var TICK_MS        = 50;   // level is sampled this often
+var CALIB_TICKS    = 6;    // ~300 ms to learn the room
+var SPEECH_MARGIN  = 9;    // dB above the learned floor
+var TRAIL_SILENCE  = 900;  // silence this long ends the turn
+var MIN_SPEECH     = 250;  // shorter than this is a click, not a word
+var NO_SPEECH_STOP = 9000; // give up waiting for a first word
+var MAX_TURN       = 45000;
+
+$('mic').onclick = function(){
+  if (session.active) { endSession('Tap to start talking'); return; }
+  startSession();
+};
+
+function startSession(){
   if (busy) return;
   if (tab === 'progress') { setTab('talk'); return; }
   if (tab === 'drill' && !drillQueue.length) return;
@@ -576,54 +603,209 @@ function startRec(){
     showErr(errBox(), "This browser can't reach the microphone. Open the page in Safari over https.");
     return;
   }
-  navigator.mediaDevices.getUserMedia({ audio:{ channelCount:1, echoCancellation:true, noiseSuppression:true } })
-  .then(function(s){
-    stream = s; chunks = [];
-    var opts = {};
-    /* audio/mp4 first: it is the one Safari on iOS supports. */
-    var cands = ['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg;codecs=opus'];
-    if (window.MediaRecorder && MediaRecorder.isTypeSupported) {
-      for (var i=0;i<cands.length;i++){ if (MediaRecorder.isTypeSupported(cands[i])) { opts.mimeType = cands[i]; break; } }
-    }
-    try { recorder = new MediaRecorder(stream, opts); } catch(e){ recorder = new MediaRecorder(stream); }
-    recorder.ondataavailable = function(ev){ if (ev.data && ev.data.size) chunks.push(ev.data); };
-    recorder.onstop = function(){
-      stopTracks();
-      var blob = new Blob(chunks, { type: (recorder && recorder.mimeType) || 'audio/mp4' });
-      var secs = (Date.now()-startedAt)/1000;
-      if (blob.size < 1200) {
-        setHint(idleHint());
-        showErr(errBox(), "That was too short — hold on and speak a full sentence.");
-        return;
-      }
-      dispatch(blob, secs);
-    };
-    recorder.start();
-    recording = true; startedAt = Date.now();
-    $('mic').classList.add('rec'); $('mic').innerHTML = '&#9632;';
-    timer = setInterval(tick, 200); tick();
-  })
-  .catch(function(){
-    showErr(errBox(), "I couldn't get microphone access. Allow the mic for this site in Settings \u2192 Safari \u2192 Microphone, then reload.");
+
+  /* Only Talk loops. Read and Drill each have their own next-item step, but
+     they still get the automatic stop, so no second tap anywhere. */
+  session.continuous = (tab === 'talk');
+  turnFailed = false;
+
+  openMic().then(function(){
+    session.active = true;
+    paintMic();
+    beginTurn();
+  }).catch(function(){
+    showErr(errBox(), "I couldn't get microphone access. Allow it in Settings → Safari → Microphone, then reload.");
   });
 }
 
-function tick(){
-  var s = Math.floor((Date.now()-startedAt)/1000);
-  setHint('Recording… ' + s + 's  ·  tap to stop');
-  if (s >= 45) stopRec();
+function endSession(hint){
+  session.active = false;
+  session.continuous = false;
+  stopTurn(true);
+  closeMic();
+  if (window.speechSynthesis) { try { window.speechSynthesis.cancel(); } catch(e){} }
+  paintMic();
+  setHint(hint || idleHint());
 }
 
-function stopRec(){
-  if (!recording) return;
-  recording = false;
-  clearInterval(timer); timer = null;
-  $('mic').classList.remove('rec'); $('mic').innerHTML = '&#127908;';
-  setHint('Working…');
-  try { recorder.stop(); } catch(e){ stopTracks(); }
+function openMic(){
+  if (session.stream && session.ctx) {
+    /* Safari suspends the context when the page is backgrounded. */
+    if (session.ctx.state === 'suspended') return session.ctx.resume().catch(function(){});
+    return Promise.resolve();
+  }
+  return navigator.mediaDevices.getUserMedia({
+    audio:{ channelCount:1, echoCancellation:true, noiseSuppression:true, autoGainControl:true }
+  }).then(function(s){
+    session.stream = s;
+    var Ctx = window.AudioContext || window.webkitAudioContext;
+    session.ctx = new Ctx();
+    var src = session.ctx.createMediaStreamSource(s);
+    session.analyser = session.ctx.createAnalyser();
+    session.analyser.fftSize = 1024;
+    session.analyser.smoothingTimeConstant = 0.2;
+    src.connect(session.analyser);
+    session.buf = new Float32Array(session.analyser.fftSize);
+    if (session.ctx.state === 'suspended') return session.ctx.resume().catch(function(){});
+  });
 }
 
-function stopTracks(){ if (stream) { stream.getTracks().forEach(function(t){ t.stop(); }); stream = null; } }
+function closeMic(){
+  if (session.stream){
+    session.stream.getTracks().forEach(function(t){ t.stop(); });
+    session.stream = null;
+  }
+  if (session.ctx){ try { session.ctx.close(); } catch(e){} session.ctx = null; }
+  session.analyser = null; session.buf = null;
+}
+
+/* Frame loudness in dB. getFloatTimeDomainData is missing on older Safari, so
+   fall back to the byte view and convert. */
+function levelDb(){
+  var a = session.analyser;
+  if (!a) return -100;
+  var sum = 0, i, n;
+  if (a.getFloatTimeDomainData && session.buf){
+    a.getFloatTimeDomainData(session.buf);
+    n = session.buf.length;
+    for (i=0;i<n;i++){ sum += session.buf[i]*session.buf[i]; }
+  } else {
+    var b = new Uint8Array(a.fftSize);
+    a.getByteTimeDomainData(b);
+    n = b.length;
+    for (i=0;i<n;i++){ var v = (b[i]-128)/128; sum += v*v; }
+  }
+  return 20 * Math.log10(Math.sqrt(sum/n) + 1e-10);
+}
+
+function beginTurn(){
+  if (!session.active || turn.running) return;
+  if (!session.stream) { endSession(); return; }
+
+  turn.chunks = [];
+  var opts = {};
+  /* audio/mp4 first: it is the one iOS Safari supports. */
+  var cands = ['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg;codecs=opus'];
+  if (window.MediaRecorder && MediaRecorder.isTypeSupported){
+    for (var i=0;i<cands.length;i++){ if (MediaRecorder.isTypeSupported(cands[i])) { opts.mimeType = cands[i]; break; } }
+  }
+  try { turn.recorder = new MediaRecorder(session.stream, opts); }
+  catch(e){
+    try { turn.recorder = new MediaRecorder(session.stream); }
+    catch(e2){ showErr(errBox(), "This browser cannot record audio."); endSession(); return; }
+  }
+
+  turn.recorder.ondataavailable = function(ev){ if (ev.data && ev.data.size) turn.chunks.push(ev.data); };
+  turn.recorder.onstop = function(){
+    var blob = new Blob(turn.chunks, { type:(turn.recorder && turn.recorder.mimeType) || 'audio/mp4' });
+    var secs = (Date.now() - turn.startedAt)/1000;
+    turn.running = false;
+    if (turn.aborted) { turn.aborted = false; return; }
+    if (turn.noSpeech){
+      turn.noSpeech = false;
+      /* Nobody spoke. Keep the session alive and go round again rather than
+         dumping the learner back to a dead screen. */
+      if (session.active && session.continuous){ setHint('Still listening…'); beginTurn(); }
+      else { setHint(idleHint()); if (session.active) endSession(); }
+      return;
+    }
+    if (blob.size < 1200){
+      showErr(errBox(), "That was too short — speak a full sentence.");
+      if (session.active && session.continuous) beginTurn(); else endSession();
+      return;
+    }
+    dispatch(blob, secs);
+  };
+
+  turn.recorder.start();
+  turn.running = true;
+  turn.startedAt = Date.now();
+  turn.aborted = false;
+  turn.noSpeech = false;
+  paintMic();
+  setHint('Listening… speak whenever you are ready');
+  startVad();
+}
+
+function startVad(){
+  var floorSamples = [], floorDb = -60;
+  var ticks = 0, elapsed = 0, speechMs = 0, silenceMs = 0, sawSpeech = false, calibrated = false;
+
+  stopVad();
+  turn.vad = setInterval(function(){
+    if (!turn.running || !session.analyser) { stopVad(); return; }
+    elapsed += TICK_MS;
+    var db = levelDb();
+
+    if (!calibrated){
+      floorSamples.push(db);
+      ticks++;
+      if (ticks >= CALIB_TICKS){
+        /* Median, not mean: one cough while calibrating must not deafen the
+           detector for the whole turn. */
+        floorSamples.sort(function(a,b){ return a-b; });
+        floorDb = floorSamples[Math.floor(floorSamples.length/2)];
+        calibrated = true;
+      }
+      return;
+    }
+
+    var isSpeech = db > floorDb + SPEECH_MARGIN;
+    if (isSpeech){
+      speechMs += TICK_MS;
+      silenceMs = 0;
+      if (speechMs >= MIN_SPEECH && !sawSpeech){
+        sawSpeech = true;
+        setHint('I can hear you');
+      }
+    } else if (sawSpeech){
+      silenceMs += TICK_MS;
+      if (silenceMs >= TRAIL_SILENCE){ stopVad(); stopTurn(); return; }
+    } else {
+      speechMs = Math.max(0, speechMs - TICK_MS);
+    }
+
+    if (!sawSpeech && elapsed >= NO_SPEECH_STOP){
+      turn.noSpeech = true; stopVad(); stopTurn(); return;
+    }
+    if (elapsed >= MAX_TURN){ stopVad(); stopTurn(); return; }
+  }, TICK_MS);
+}
+
+function stopVad(){ if (turn.vad){ clearInterval(turn.vad); turn.vad = null; } }
+
+function stopTurn(aborted){
+  stopVad();
+  if (!turn.running) return;
+  if (aborted) turn.aborted = true;
+  setHint(aborted ? idleHint() : 'Working…');
+  try { turn.recorder.stop(); } catch(e){ turn.running = false; }
+}
+
+function paintMic(){
+  var b = $('mic');
+  if (!b) return;
+  if (session.active){ b.classList.add('rec'); b.innerHTML = '&#9632;'; }
+  else { b.classList.remove('rec'); b.innerHTML = '&#127908;'; }
+}
+
+/* After the tutor has finished speaking, start listening again. Polling
+   `speaking` rather than trusting onend, which is unreliable on iOS. Waiting
+   matters: the microphone would otherwise record the tutor's own voice. */
+function resumeAfterSpeech(){
+  if (!session.active || !session.continuous) return;
+  var waited = 0;
+  var poll = setInterval(function(){
+    if (!session.active){ clearInterval(poll); return; }
+    var talking = window.speechSynthesis && window.speechSynthesis.speaking;
+    waited += 200;
+    if (!talking || waited > 40000){
+      clearInterval(poll);
+      setTimeout(function(){ if (session.active && !turn.running) beginTurn(); }, 350);
+    }
+  }, 200);
+  setHint('Speaking…');
+}
 
 /* ---- decode → mono 16 kHz → WAV → base64 ---- */
 function decode(arrayBuffer){
@@ -810,9 +992,9 @@ l1 ? ("Their first language is " + l1 + ".") : "",
    ========================================================================= */
 function errBox(){ return tab === 'read' ? 'readErr' : tab === 'drill' ? 'drillErr' : 'err'; }
 function idleHint(){
-  if (tab === 'read')  return 'Tap and read the sentence above';
-  if (tab === 'drill') return drillQueue.length ? 'Tap and say it correctly' : 'Nothing due today';
-  return 'Tap, speak a sentence, tap again';
+  if (tab === 'read')  return 'Tap, then read the sentence above';
+  if (tab === 'drill') return drillQueue.length ? 'Tap, then say it correctly' : 'Nothing due today';
+  return 'Tap once to start talking';
 }
 
 function dispatch(blob, secs){
@@ -827,9 +1009,17 @@ function prepare(blob){
 }
 
 function finish(spinner){
-  busy = false; $('mic').disabled = false;
+  busy = false;
   $(spinner).classList.add('hide');
-  setHint(idleHint());
+  if (turnFailed){
+    turnFailed = false;
+    if (session.active) endSession('Tap once to start talking');
+    else setHint(idleHint());
+    return;
+  }
+  if (session.active && session.continuous) resumeAfterSpeech();
+  else if (session.active) endSession();
+  else setHint(idleHint());
 }
 
 /* ---------------- Talk ---------------- */
@@ -837,7 +1027,6 @@ function runTalk(blob, secs){
   busy = true; clearErr('err');
   $('thinking').classList.remove('hide');
   $('results').innerHTML = '';
-  $('mic').disabled = true;
 
   prepare(blob)
   .then(function(b64){ return callGemini(b64, TALK_SCHEMA, talkPrompt()); })
@@ -862,7 +1051,8 @@ function runTalk(blob, secs){
     renderTalk(d, verified, wpm, wc);
     refreshTabs();
   })
-  .catch(function(e){ showErr('err', e && e.message ? e.message : "Something went wrong. Try again."); })
+  .catch(function(e){ turnFailed = true;
+    showErr('err', e && e.message ? e.message : "Something went wrong. Try again."); })
   .then(function(){ finish('thinking'); });
 }
 
@@ -871,7 +1061,6 @@ function runRead(blob, secs){
   busy = true; clearErr('readErr');
   $('readThinking').classList.remove('hide');
   $('readResults').innerHTML = '';
-  $('mic').disabled = true;
   var target = SENTENCES[readIdx % SENTENCES.length][0];
 
   prepare(blob)
@@ -896,7 +1085,8 @@ function runRead(blob, secs){
     renderRead(target, list, pct, d);
     refreshTabs();
   })
-  .catch(function(e){ showErr('readErr', e && e.message ? e.message : "Something went wrong. Try again."); })
+  .catch(function(e){ turnFailed = true;
+    showErr('readErr', e && e.message ? e.message : "Something went wrong. Try again."); })
   .then(function(){ finish('readThinking'); });
 }
 
@@ -906,7 +1096,6 @@ function runDrill(blob){
   if (!card) return;
   busy = true; clearErr('drillErr');
   $('drillThinking').classList.remove('hide');
-  $('mic').disabled = true;
 
   prepare(blob)
   .then(function(b64){
@@ -924,7 +1113,8 @@ function runDrill(blob){
     drillResult.heard = d.transcript;
     renderDrill();
   })
-  .catch(function(e){ showErr('drillErr', e && e.message ? e.message : "Something went wrong. Try again."); })
+  .catch(function(e){ turnFailed = true;
+    showErr('drillErr', e && e.message ? e.message : "Something went wrong. Try again."); })
   .then(function(){ finish('drillThinking'); });
 }
 
@@ -1302,6 +1492,7 @@ function renderProgress(){
    Navigation
    ========================================================================= */
 function setTab(next){
+  if (session.active) endSession();
   tab = next;
   ['talk','read','drill','progress'].forEach(function(t){
     $('tab-'+t).classList.toggle('hide', t !== next);
@@ -1356,6 +1547,7 @@ $('readNext').onclick = function(){
 $('readHear').onclick = function(){ speak(SENTENCES[readIdx % SENTENCES.length][0], 0.85); };
 
 $('gear').onclick = function(){
+  if (session.active) endSession();
   if (!$('settings').classList.contains('hide')) { boot(); return; }
   $('key2').value = apiKey; $('model').value = model; $('l1').value = l1;
   ['talk','read','drill','progress'].forEach(function(t){ $('tab-'+t).classList.add('hide'); });
