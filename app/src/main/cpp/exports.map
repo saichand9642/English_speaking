@@ -1,0 +1,14 @@
+/*
+ * Only the JNI entry points leave this library. Everything else -- the whole of
+ * ggml, llama and whisper -- stays local.
+ *
+ * Hidden visibility alone does not achieve this, because the static libraries
+ * are compiled by their own CMake projects without our visibility flags. A
+ * version script is applied at link time and so covers them too.
+ */
+{
+    global:
+        Java_com_speak_*;
+    local:
+        *;
+};

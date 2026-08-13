@@ -1,0 +1,114 @@
+name: iOS
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # SpeakCore is deliberately free of platform frameworks, so it is verified on
+  # Linux as well as macOS. Linux is the cheap, fast gate; macOS proves the same
+  # code compiles with the Apple toolchain the app will actually use.
+  core-linux:
+    name: Core logic (Linux)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Swift
+        uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: "6.2"
+
+      - name: Test SpeakCore
+        working-directory: ios
+        run: swift test --enable-code-coverage
+
+  core-macos:
+    name: Core logic (macOS)
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: swift --version && xcodebuild -version
+
+      - name: Test SpeakCore
+        working-directory: ios
+        run: swift test
+
+  # The app target needs macOS: SwiftUI, AVFoundation and Metal cannot be compiled
+  # anywhere else. This job produces an UNSIGNED .ipa, which is as far as a build
+  # server can take you without a signing identity. See docs/IOS_INSTALL.md for how
+  # that .ipa gets onto a phone.
+  app:
+    name: Unsigned .ipa
+    runs-on: macos-15
+    timeout-minutes: 60
+    # Skipped until ios/project.yml and the app sources are present, so this
+    # workflow stays green while the app layer is still being written.
+    if: ${{ hashFiles('ios/project.yml') != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      # Hand-written .xcodeproj files are large, fragile and unreviewable. XcodeGen
+      # builds one from a short YAML file that a human can actually read.
+      - name: Generate the Xcode project
+        working-directory: ios
+        run: xcodegen generate
+
+      - name: Cache native dependencies
+        uses: actions/cache@v4
+        with:
+          path: ios/vendor
+          key: ios-native-${{ hashFiles('ios/scripts/build-native.sh') }}
+
+      # whisper.cpp and llama.cpp are compiled into xcframeworks for device and
+      # simulator, with Metal enabled.
+      - name: Build whisper.cpp and llama.cpp
+        working-directory: ios
+        run: bash scripts/build-native.sh
+
+      - name: Build for device, without signing
+        working-directory: ios
+        run: |
+          xcodebuild \
+            -project Speak.xcodeproj \
+            -scheme Speak \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
+
+      - name: Package as an unsigned .ipa
+        working-directory: ios
+        run: |
+          APP_PATH="build/Build/Products/Release-iphoneos/Speak.app"
+          if [ ! -d "$APP_PATH" ]; then
+            echo "::error::Speak.app was not produced"; exit 1
+          fi
+          rm -rf Payload && mkdir -p Payload
+          cp -R "$APP_PATH" Payload/
+          zip -qry Speak-unsigned.ipa Payload
+          ls -la Speak-unsigned.ipa
+
+      - name: Upload the unsigned .ipa
+        uses: actions/upload-artifact@v4
+        with:
+          name: speak-unsigned-ipa
+          path: ios/Speak-unsigned.ipa
+          if-no-files-found: error

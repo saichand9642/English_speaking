@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Speak">
+<meta name="theme-color" content="#FBF9F6">
+<title>Speak — English Coach</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAE3ElEQVR4nO3cMXLbMBRFUdDj/aTJilJnJl0Wkc4zqb2iNF5R0kQOrZAiQADE+w/39DY5wPUXJGu4JBGfvn35PfoeUOft5XUZfQ/DboCA/Y0I/NILEvG8roq7+0WIGPd6xt3tFxMyjvQIu/kvJGSUahn2U6tflBIx45yW3TT5yyBktFI7rasnNDGjpdqeqoImZvRQ09Wp8U7IuErpEaR4QhMzrlTaW1HQxIwRSrrLDpqYMVJuf00/hwZGywqa6QwFOR0eBk3MUHLU48OgiRmKHnXJGRpWdoNmOkPZXp+bQRMzItjqlCMHrPwXNNMZkdz3yoSGlQ9BM50R0bpbJjSsEDSsvAfNcQOR3fplQsMKQcPKkhLHDfhgQsMKQcMKQcPKE+dnOGFCwwpBwwpBwwpBwwpBwwpBwwpBw8rz6Bvo6dePn6NvQdbn719H30IXi9s/Voi4nFPcFkETcTvR4w4dNCH3EzXssG8KibmvqOsbMuioix1NxHUOdeSIuMAuohxBwkxoYh4ryvqHCDrKYrqLsA/yQUdYxJmo74d80EAJ6aDVp8GslPdFNmjlRYPu/kgGrbpY+EhxnySDBs6SC1rxrx771PZLLmigBkHDilTQai9fyKO0b1JBA7UIGlZkglZ62UI5lf2TCRpogaBhhaBhhaBhhaBhhaBhhaBhhaBhxfrpo1u2ni/R858C7tdTI/Ogmd6LnvOglJb34H69s/fQ2xRHjtyFbrUh7tdTZh906SbWbrr79dTZB425WAd9dhrxc3FZB435EDSsEDSsEDSsWAd99h8J/Fxc1kFjPvZBl06j2unlfj119kGnlL+JrTbb/XrKpvly0o37t99GfttO4R820wWNfhSCnuLIgXkQNKwQNKwQNKwQNKwQNKwQNKwQNKzIBK3woTzOU9k/maCBFggaVqSCVnnZQhmlfZMKGqhF0LAiF7TSyxeOqe2XXNBADcmg1f7qsU1xnySDTklzsfCP6v7IBp2S7qLNTnlfpIMGSskHrTwNZqS+H/JBp6S/iLOIsA8hgk4pxmI6i7L+Ms/lKMEzPK4TJeSbMBN6LdoiRxVxnUMGnVLMxY4k6vqGPHLc4wjSTtSQbyyCXiPuctEjXrMLeo249zlFvGYd9NrouF0DUhP2TWEkxHwdgu6MmK9F0B0R8/UIuhNiHoOgOyDmcQi6MWIe63n0DbggZA1M6AaIWQdBVyJmLQRdgZj1EPRJxKyJoE8gZl0EXYiYtRF0AWLWR9CZiDkGgs5AzHEQ9AFijoWgHyDmeAh6BzHHRNAbiDkugr5DzLHx9dG/CNkDEzoRs5PpgyZmL1MHTcx+pg2amD1NGTQx+5ouaGL2NlXQxOxvSSmlWZ5ACn9TTWj4I2hYIWhYeUoppbeX12X0jQC13l5eFyY0rBA0rLwHzbEDkd36ZULDCkHDyoegOXYgonW3TGhY+S9opjQiue+VCQ0rm0EzpRHBVqe7E5qooWyvT44csPIwaKY0FD3q8nBCEzWUHPWYdeQgaijI6ZAzNKxkB82Uxki5/RVNaKLGCCXdFR85iBpXKu2tKk6e54Fezg7OqjeFTGv0UNNV9accRI2WantqGiNHEJzVajA2/RyaaY0zWnbTLUCmNY70GIDdJyph417PV/JLjwjEPa+rjqPDzrzE7W/Ee6o/XA2k1VaYzc4AAAAASUVORK5CYII=">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAE3ElEQVR4nO3cMXLbMBRFUdDj/aTJilJnJl0Wkc4zqb2iNF5R0kQOrZAiQADE+w/39DY5wPUXJGu4JBGfvn35PfoeUOft5XUZfQ/DboCA/Y0I/NILEvG8roq7+0WIGPd6xt3tFxMyjvQIu/kvJGSUahn2U6tflBIx45yW3TT5yyBktFI7rasnNDGjpdqeqoImZvRQ09Wp8U7IuErpEaR4QhMzrlTaW1HQxIwRSrrLDpqYMVJuf00/hwZGywqa6QwFOR0eBk3MUHLU48OgiRmKHnXJGRpWdoNmOkPZXp+bQRMzItjqlCMHrPwXNNMZkdz3yoSGlQ9BM50R0bpbJjSsEDSsvAfNcQOR3fplQsMKQcPKkhLHDfhgQsMKQcMKQcPKE+dnOGFCwwpBwwpBwwpBwwpBwwpBwwpBw8rz6Bvo6dePn6NvQdbn719H30IXi9s/Voi4nFPcFkETcTvR4w4dNCH3EzXssG8KibmvqOsbMuioix1NxHUOdeSIuMAuohxBwkxoYh4ryvqHCDrKYrqLsA/yQUdYxJmo74d80EAJ6aDVp8GslPdFNmjlRYPu/kgGrbpY+EhxnySDBs6SC1rxrx771PZLLmigBkHDilTQai9fyKO0b1JBA7UIGlZkglZ62UI5lf2TCRpogaBhhaBhhaBhhaBhhaBhhaBhhaBhxfrpo1u2ni/R858C7tdTI/Ogmd6LnvOglJb34H69s/fQ2xRHjtyFbrUh7tdTZh906SbWbrr79dTZB425WAd9dhrxc3FZB435EDSsEDSsEDSsWAd99h8J/Fxc1kFjPvZBl06j2unlfj119kGnlL+JrTbb/XrKpvly0o37t99GfttO4R820wWNfhSCnuLIgXkQNKwQNKwQNKwQNKwQNKwQNKwQNKzIBK3woTzOU9k/maCBFggaVqSCVnnZQhmlfZMKGqhF0LAiF7TSyxeOqe2XXNBADcmg1f7qsU1xnySDTklzsfCP6v7IBp2S7qLNTnlfpIMGSskHrTwNZqS+H/JBp6S/iLOIsA8hgk4pxmI6i7L+Ms/lKMEzPK4TJeSbMBN6LdoiRxVxnUMGnVLMxY4k6vqGPHLc4wjSTtSQbyyCXiPuctEjXrMLeo249zlFvGYd9NrouF0DUhP2TWEkxHwdgu6MmK9F0B0R8/UIuhNiHoOgOyDmcQi6MWIe63n0DbggZA1M6AaIWQdBVyJmLQRdgZj1EPRJxKyJoE8gZl0EXYiYtRF0AWLWR9CZiDkGgs5AzHEQ9AFijoWgHyDmeAh6BzHHRNAbiDkugr5DzLHx9dG/CNkDEzoRs5PpgyZmL1MHTcx+pg2amD1NGTQx+5ouaGL2NlXQxOxvSSmlWZ5ACn9TTWj4I2hYIWhYeUoppbeX12X0jQC13l5eFyY0rBA0rLwHzbEDkd36ZULDCkHDyoegOXYgonW3TGhY+S9opjQiue+VCQ0rm0EzpRHBVqe7E5qooWyvT44csPIwaKY0FD3q8nBCEzWUHPWYdeQgaijI6ZAzNKxkB82Uxki5/RVNaKLGCCXdFR85iBpXKu2tKk6e54Fezg7OqjeFTGv0UNNV9accRI2WantqGiNHEJzVajA2/RyaaY0zWnbTLUCmNY70GIDdJyph417PV/JLjwjEPa+rjqPDzrzE7W/Ee6o/XA2k1VaYzc4AAAAASUVORK5CYII=">
+<style>
+  :root{
+    --bg:#FBF9F6; --surface:#FFFFFF; --ink:#1B1A18; --ink-2:#5C5850;
+    --line:#E7E2D9; --accent:#2F6F62; --accent-soft:#E8F1EE;
+    --warn:#B4551F; --warn-soft:#FBEFE6; --good:#2F6F62;
+    --radius:18px; --shadow:0 1px 2px rgba(27,26,24,.05), 0 8px 24px rgba(27,26,24,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#16150F; --surface:#201E1A; --ink:#F2EFE8; --ink-2:#B6B0A4;
+      --line:#37342E; --accent:#7FCBBA; --accent-soft:#26372F;
+      --warn:#F0A277; --warn-soft:#3A2418;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    }
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font:16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding:env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+    overscroll-behavior-y:contain;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:16px 18px 220px}
+  header{display:flex;align-items:center;justify-content:space-between;padding:8px 0 18px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:650;letter-spacing:-.01em}
+  .brand .dot{width:26px;height:26px;border-radius:8px;background:var(--accent);display:grid;place-items:center}
+  .brand .dot::after{content:"";width:12px;height:9px;border-radius:3px;background:var(--bg)}
+  .iconbtn{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+    width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:17px;cursor:pointer}
+  .iconbtn:active{transform:scale(.95)}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px;box-shadow:var(--shadow);margin-bottom:14px}
+  .card h3{margin:0 0 10px;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);font-weight:650}
+  .small{font-size:14px}
+  .muted{color:var(--ink-2)}
+
+  .prompt{background:var(--accent-soft);border-radius:var(--radius);padding:18px;margin-bottom:14px}
+  .prompt .lbl{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);font-weight:650}
+  .prompt p{margin:8px 0 12px;font-size:20px;line-height:1.4;font-weight:600}
+  .prompt button{background:none;border:none;color:var(--accent);font:inherit;font-size:14.5px;
+    font-weight:600;padding:0;cursor:pointer}
+
+  .btn{width:100%;min-height:52px;border-radius:14px;border:none;background:var(--accent);color:#fff;
+    font:inherit;font-weight:650;font-size:16px;cursor:pointer;margin-top:4px}
+  .btn:active{transform:scale(.99)}
+  .btn.ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+  .btn.small{min-height:46px;font-size:15px}
+  .row{display:flex;gap:10px}
+  .row .btn{margin-top:0}
+
+  .field{width:100%;min-height:50px;border:1px solid var(--line);border-radius:12px;background:var(--bg);
+    color:var(--ink);font:inherit;font-size:16px;padding:0 14px;margin:6px 0 12px}
+  label.small{display:block;margin-bottom:2px}
+
+  ol.steps{margin:0 0 16px;padding-left:20px;font-size:15px;color:var(--ink-2);line-height:1.65}
+  ol.steps b{color:var(--ink)}
+  a{color:var(--accent)}
+  .hide{display:none !important}
+  .err{background:var(--warn-soft);border:1px solid var(--line);color:var(--warn);border-radius:12px;
+    padding:12px 14px;font-size:14.5px;margin-bottom:14px}
+  .spinner{width:20px;height:20px;border:2.5px solid var(--line);border-top-color:var(--accent);
+    border-radius:50%;animation:spin .7s linear infinite;display:inline-block;vertical-align:-4px;margin-right:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .histrow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+  .histrow:last-child{border-bottom:none}
+  .count{background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:1px 8px;font-size:12.5px;font-weight:650}
+
+  s,.del{color:var(--warn);opacity:.85}
+  .ins,b.fix{color:var(--good);font-weight:650}
+  .chip{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:8px;
+    padding:2px 9px;font-size:12.5px;font-weight:600;margin-top:8px}
+  .sep{height:1px;background:var(--line);margin:14px 0}
+
+  /* target sentence for read-aloud */
+  .target{font-size:21px;line-height:1.5;font-weight:600;text-align:center;margin:4px 0 2px}
+  .target .ok{color:var(--ink)}
+  .target .bad{color:var(--warn);font-weight:700}
+  .target .miss{color:var(--ink-2);text-decoration:line-through}
+
+  /* stats + charts */
+  .stats{display:flex;justify-content:space-between;gap:10px}
+  .stat b{display:block;font-size:24px;font-weight:650;letter-spacing:-.02em}
+  .stat span{font-size:13px;color:var(--ink-2)}
+  .chartwrap{margin-top:10px}
+  .chartwrap svg{width:100%;height:96px;display:block;overflow:visible}
+  .barrow{display:flex;justify-content:space-between;font-size:14px;margin-top:12px}
+  .track{height:8px;background:var(--accent-soft);border-radius:4px;margin-top:6px;overflow:hidden}
+  .track i{display:block;height:100%;background:var(--accent);border-radius:4px}
+
+  /* bottom nav + record bar */
+  .bottom{position:fixed;left:0;right:0;bottom:0;background:var(--bg);
+    border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+  .recbar{display:flex;flex-direction:column;align-items:center;padding:14px 0 6px}
+  .mic{width:84px;height:84px;border-radius:50%;border:none;background:var(--accent);color:#fff;
+    font-size:32px;cursor:pointer;box-shadow:0 6px 20px rgba(47,111,98,.35)}
+  .mic:disabled{opacity:.45}
+  .mic.rec{background:var(--warn);box-shadow:0 6px 20px rgba(180,85,31,.35)}
+  .rechint{font-size:13.5px;color:var(--ink-2);margin-top:8px;text-align:center;min-height:19px}
+  .tabs{display:flex;border-top:1px solid var(--line)}
+  .tabs button{flex:1;background:none;border:none;font:inherit;font-size:11.5px;font-weight:600;
+    color:var(--ink-2);padding:9px 0 11px;cursor:pointer;letter-spacing:.02em}
+  .tabs button .ic{display:block;font-size:19px;margin-bottom:1px}
+  .tabs button.on{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="brand"><span class="dot"></span> Speak</div>
+    <button class="iconbtn" id="gear" title="Settings">&#9881;</button>
+  </header>
+
+  <!-- ===================== SETUP ===================== -->
+  <section id="setup" class="hide">
+    <div class="card">
+      <h3>One-time setup</h3>
+      <p class="small muted" style="margin-top:0">You need a free Google AI key. No credit card, takes two minutes.</p>
+      <ol class="steps">
+        <li>Open <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a></li>
+        <li>Sign in with any Google account</li>
+        <li>Tap <b>Create API key</b></li>
+        <li>Copy it and paste below</li>
+      </ol>
+      <input class="field" id="key" type="password" placeholder="Paste your API key here"
+             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <button class="btn" id="save">Save &amp; start</button>
+      <p class="small muted" style="margin-bottom:0">The key is stored only on this phone and is sent only to Google. Keep this page link private.</p>
+    </div>
+  </section>
+
+  <!-- ===================== TALK ===================== -->
+  <section id="tab-talk" class="hide">
+    <div class="prompt">
+      <div class="lbl">Try saying</div>
+      <p id="promptText">Tell me about what you did yesterday.</p>
+      <button id="newPrompt">Give me another &rarr;</button>
+    </div>
+    <div id="err" class="err hide"></div>
+    <div id="thinking" class="card hide"><span class="spinner"></span>Listening to your recording…</div>
+    <div id="results"></div>
+  </section>
+
+  <!-- ===================== READ ALOUD ===================== -->
+  <section id="tab-read" class="hide">
+    <div class="card">
+      <h3 id="readFocus">Read this aloud</h3>
+      <div class="target" id="readTarget"></div>
+      <div class="sep"></div>
+      <div class="row">
+        <button class="btn ghost small" id="readHear">&#128266; Hear it</button>
+        <button class="btn ghost small" id="readNext">Next &rarr;</button>
+      </div>
+    </div>
+    <div id="readErr" class="err hide"></div>
+    <div id="readThinking" class="card hide"><span class="spinner"></span>Scoring your reading…</div>
+    <div id="readResults"></div>
+  </section>
+
+  <!-- ===================== DRILL ===================== -->
+  <section id="tab-drill" class="hide">
+    <div id="drillBody"></div>
+    <div id="drillErr" class="err hide"></div>
+    <div id="drillThinking" class="card hide"><span class="spinner"></span>Checking…</div>
+  </section>
+
+  <!-- ===================== PROGRESS ===================== -->
+  <section id="tab-progress" class="hide">
+    <div id="progressBody"></div>
+  </section>
+
+  <!-- ===================== SETTINGS ===================== -->
+  <section id="settings" class="hide">
+    <div class="card">
+      <h3>Settings</h3>
+      <label class="small muted">API key</label>
+      <input class="field" id="key2" type="password" placeholder="API key" autocomplete="off">
+      <label class="small muted">Model</label>
+      <input class="field" id="model" placeholder="gemini-flash-latest" autocomplete="off">
+      <label class="small muted">Your first language (helps with pronunciation tips)</label>
+      <input class="field" id="l1" placeholder="e.g. Telugu, Hindi, Tamil" autocomplete="off">
+      <button class="btn" id="save2">Save</button>
+    </div>
+    <div class="card">
+      <h3>Your history</h3>
+      <p class="small muted" style="margin-top:0">There is no account and no server, so this file is the
+        only way your history survives losing the phone. Your API key is never included.</p>
+      <div class="row">
+        <button class="btn ghost small" id="exportBtn">Export</button>
+        <button class="btn ghost small" id="importBtn">Import</button>
+      </div>
+      <input type="file" id="importFile" accept="application/json,.json" class="hide">
+      <div style="height:10px"></div>
+      <button class="btn ghost small" id="clearHist">Clear my history</button>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== BOTTOM BAR ===================== -->
+<div class="bottom" id="bottom">
+  <div class="recbar" id="recbar">
+    <button class="mic" id="mic" aria-label="Record">&#127908;</button>
+    <div class="rechint" id="hint">Tap, speak a sentence, tap again</div>
+  </div>
+  <div class="tabs" id="tabs">
+    <button data-tab="talk" class="on"><span class="ic">&#127908;</span>Talk</button>
+    <button data-tab="read"><span class="ic">&#128214;</span>Read</button>
+    <button data-tab="drill"><span class="ic">&#8635;</span>Drill</button>
+    <button data-tab="progress"><span class="ic">&#128200;</span>Progress</button>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* =========================================================================
+   Storage. Falls back to memory so the page still works in a sandboxed
+   preview where localStorage throws.
+   ========================================================================= */
+var mem = {};
+var store = {
+  get: function(k){ try { var v = localStorage.getItem(k); return v === null ? (k in mem ? mem[k] : null) : v; }
+                    catch(e){ return (k in mem) ? mem[k] : null; } },
+  set: function(k,v){ mem[k]=v; try { localStorage.setItem(k,v); } catch(e){} }
+};
+var $ = function(id){ return document.getElementById(id); };
+
+/* =========================================================================
+   Content
+   ========================================================================= */
+var PROMPTS = [
+  "Tell me about what you did yesterday.",
+  "Describe your journey to work this morning.",
+  "What is one thing you want to get better at, and why?",
+  "Explain your job to someone who knows nothing about it.",
+  "Describe the last meal you really enjoyed.",
+  "What did you do last weekend?",
+  "Talk about a person who has taught you something important.",
+  "If you had a free day tomorrow, how would you spend it?",
+  "Describe the place where you grew up.",
+  "What is something you disagreed with recently, and why?",
+  "Explain how to make a cup of tea, step by step.",
+  "Tell me about a film or show you watched recently.",
+  "What are you planning to do next month?",
+  "Describe a problem you solved at work this week.",
+  "What is the best advice anyone has given you?",
+  "Talk about a time you felt nervous.",
+  "Compare living in a city and living in a village.",
+  "What would you change about your daily routine?",
+  "Describe your closest friend.",
+  "Tell me about something you bought recently and whether it was worth it."
+];
+
+/* Weighted towards the sounds that most affect how easily Indian-English
+   speech is understood elsewhere. */
+var SENTENCES = [
+  ["We have very heavy rain in the village every winter.", "The v and w sounds"],
+  ["Vivek will visit the new website when he wants advice.", "The v and w sounds"],
+  ["The van was waiting outside the wide white wall.", "The v and w sounds"],
+  ["Every winter we invite twelve visitors over.", "The v and w sounds"],
+  ["I think these three things are worth the trouble.", "The th sound"],
+  ["They thought the weather on Thursday was better than this.", "The th sound"],
+  ["Both brothers thanked them for the birthday gift.", "The th sound"],
+  ["There are thirty-three months in that other theory.", "The th sound"],
+  ["The ship on the beach is cheap to fill.", "Short and long vowels"],
+  ["He will feel the heel of the full boot.", "Short and long vowels"],
+  ["Sit in this seat and eat a little bit.", "Short and long vowels"],
+  ["The fool pulled a full cart up the hill.", "Short and long vowels"],
+  ["The cat sat on a hot cot in the back yard.", "The a and o vowels"],
+  ["My aunt cannot stand the sand at all.", "The a and o vowels"],
+  ["The zoo closes at six, so please choose quickly.", "The s and z sounds"],
+  ["His eyes were busy as the buses passed.", "The s and z sounds"],
+  ["Please find four perfect photographs for the file.", "The f and p sounds"],
+  ["She stopped the school bus at the station street.", "Consonant clusters"],
+  ["The strong sports team scored twelve straight points.", "Consonant clusters"],
+  ["He asked for the desks to be moved next Tuesday.", "Consonant clusters"],
+  ["I would like to discuss the report before the meeting.", "Rhythm and stress"],
+  ["Photography is a comfortable hobby for a vegetable farmer.", "Rhythm and stress"],
+  ["The development of the department was necessary.", "Rhythm and stress"],
+  ["Yesterday I finished the interesting chapter about temperature.", "Rhythm and stress"],
+  ["Could you tell me where the nearest bank is, please?", "Everyday speech"],
+  ["I have been working here for about three years now.", "Everyday speech"],
+  ["If I had known earlier, I would have called you.", "Everyday speech"],
+  ["There is not much difference between these two options.", "Everyday speech"]
+];
+
+/* =========================================================================
+   State
+   ========================================================================= */
+var apiKey  = store.get('ec_key') || '';
+var model   = store.get('ec_model') || 'gemini-flash-latest';
+var l1      = store.get('ec_l1') || '';
+var history = readJson('ec_hist', []);
+var cards   = readJson('ec_cards', []);
+var readIdx = parseInt(store.get('ec_readidx') || '0', 10) || 0;
+
+var tab = 'talk';
+var recorder = null, chunks = [], stream = null, recording = false, busy = false, timer = null, startedAt = 0;
+var drillQueue = [], drillPos = 0, drillResult = null, drillDone = 0, drillRevealed = false;
+
+function readJson(k, dflt){ try { return JSON.parse(store.get(k) || 'null') || dflt; } catch(e){ return dflt; } }
+function saveHist(){ store.set('ec_hist', JSON.stringify(history.slice(-400))); }
+function saveCards(){ store.set('ec_cards', JSON.stringify(cards)); }
+
+/* =========================================================================
+   Words. Every comparison agrees on what a word is, so a mistake accepted by
+   the verifier always lines up in the diff.
+   ========================================================================= */
+function words(s){ return String(s||'').trim().split(/\s+/).filter(Boolean); }
+function norm(w){ return String(w||'').toLowerCase().replace(/[^a-z0-9']/g,''); }
+function normWords(s){ return String(s||'').toLowerCase().split(/[^a-z0-9']+/).filter(Boolean); }
+
+function containsRun(hay, needle){
+  if (!needle.length || needle.length > hay.length) return false;
+  for (var s=0; s<=hay.length-needle.length; s++){
+    var ok = true;
+    for (var i=0;i<needle.length;i++){ if (hay[s+i] !== needle[i]) { ok=false; break; } }
+    if (ok) return true;
+  }
+  return false;
+}
+
+function editDistance(a,b){
+  if (a===b) return 0;
+  if (!a.length) return b.length;
+  if (!b.length) return a.length;
+  var prev = [], cur = [], i, j;
+  for (j=0;j<=b.length;j++) prev[j]=j;
+  for (i=1;i<=a.length;i++){
+    cur[0]=i;
+    for (j=1;j<=b.length;j++){
+      var cost = a[i-1]===b[j-1] ? 0 : 1;
+      cur[j] = Math.min(cur[j-1]+1, prev[j]+1, prev[j-1]+cost);
+    }
+    prev = cur.slice();
+  }
+  return prev[b.length];
+}
+
+/* =========================================================================
+   Never invent mistakes.
+
+   A language model asked to find errors will sometimes report one that is not
+   in the sentence at all, or "fix" a fragment by replacing it with itself.
+   Every claimed mistake is checked against the real transcript before it
+   reaches the screen: the exact fragment must actually be there, and the fix
+   must differ from it.
+   ========================================================================= */
+function verifyMistakes(transcript, list){
+  var hay = normWords(transcript);
+  if (!hay.length) return [];
+  var out = [], seen = {};
+  (list||[]).forEach(function(m){
+    var said   = String(m.said||'').trim();
+    var better = String(m.better||'').trim();
+    var why    = String(m.why||'').trim();
+    if (!said || !better || !why) return;
+
+    var sw = normWords(said);
+    if (!sw.length || sw.length > 12) return;          // implausible fragment
+    if (!containsRun(hay, sw)) return;                 // never actually said
+    var bw = normWords(better);
+    if (bw.join(' ') === sw.join(' ')) return;         // changes nothing
+
+    var key = sw.join(' ') + '->' + bw.join(' ');
+    if (seen[key]) return;
+    seen[key] = 1;
+    out.push({ said:said, better:better, why:why, category:(m.category||'other') });
+  });
+  return out;
+}
+
+/* =========================================================================
+   Deterministic checks for frequent Indian-English patterns.
+
+   These catch what a model tends to miss. Every rule has one unambiguous fix,
+   so it cannot produce a false positive of the "you said something you did not
+   say" kind. Anything context-dependent is left to the model instead.
+   ========================================================================= */
+var PLAIN = { went:'go', came:'come', saw:'see', ate:'eat', took:'take', gave:'give',
+  made:'make', said:'say', got:'get', had:'have', knew:'know', told:'tell',
+  found:'find', left:'leave', felt:'feel', brought:'bring', bought:'buy',
+  thought:'think', caught:'catch', taught:'teach' };
+
+/* Nouns that can only be owned. This constraint is load-bearing: "I am having
+   lunch" and "I'm having trouble" are perfectly good English, so matching on
+   "am having" alone would invent a mistake. */
+var OWNED = '(?:(?:a|an|one|two|three|four|five|six|seven|eight|nine|ten|many|some|no|\\d+)\\s+)?' +
+            '(?:brothers?|sisters?|cousins?|sons?|daughters?|cars?|bikes?|houses?|phones?|laptops?|doubts?|money)';
+
+var RULES = [
+  [/\b(discuss|discussed|discussing)\s+about\b/ig, 'preposition',
+   '"Discuss" already means "talk about", so it does not need "about" after it.',
+   function(m){ return m[1]; }],
+  [/\b(return|returned|revert|reverted)\s+back\b/ig, 'word choice',
+   '"Return" already means "come back", so "back" is repeated.',
+   function(m){ return m[1]; }],
+  [/\bsince\s+(\d+|a|two|three|four|five|six|seven|eight|nine|ten)\s+(years?|months?|weeks?|days?|hours?)\b/ig,
+   'preposition',
+   'Use "for" with a length of time and "since" with a starting point: "for two years", but "since 2019".',
+   function(m){ return 'for ' + m[1] + ' ' + m[2]; }],
+  [/\bone of my (friend|brother|sister|cousin|colleague|teacher|student)\b/ig, 'plural',
+   '"One of" picks one out of a group, so the noun after it is plural.',
+   function(m){ return 'one of my ' + m[1] + 's'; }],
+  [/\b(informations|advices|equipments|furnitures|luggages|softwares|staffs)\b/ig, 'plural',
+   'This word has no plural in English, so it never takes an "s".',
+   function(m){ return m[1].slice(0,-1); }],
+  [new RegExp('\\b(did|didn\'t|did not)\\s+(' + Object.keys(PLAIN).join('|') + ')\\b','ig'), 'tense',
+   'After "did" or "didn\'t", the verb goes back to its plain form.',
+   function(m){ return m[1] + ' ' + (PLAIN[m[2].toLowerCase()] || m[2]); }],
+  [/\bmore\s+(better|worse|easier|faster|slower|bigger|smaller|older|younger|cheaper|closer)\b/ig,
+   'word choice',
+   'This word already compares two things, so "more" in front of it is one comparison too many.',
+   function(m){ return m[1]; }],
+  [new RegExp('\\b(I|we|they|you)\\s+(?:am|are)\\s+having\\s+(' + OWNED + ')\\b','ig'), 'tense',
+   'When "have" means "own", English uses the plain form, not "-ing".',
+   function(m){ return m[1] + ' have ' + m[2]; }],
+  [new RegExp('\\b(he|she|it)\\s+is\\s+having\\s+(' + OWNED + ')\\b','ig'), 'tense',
+   'When "have" means "own", English uses the plain form, not "-ing".',
+   function(m){ return m[1] + ' has ' + m[2]; }],
+  [/\b(I|we|they|you)\s+(?:am|are)\s+(knowing|understanding|wanting|needing|liking|believing)\b/ig,
+   'tense',
+   'Verbs about thinking and feeling stay in their simple form, without "-ing".',
+   function(m){ var p = m[2].toLowerCase().slice(0,-3);
+                if (p==='believ'||p==='lik') p += 'e';
+                return m[1] + ' ' + p; }],
+  [/\b(what|where|when|why|how)\s+(you|he|she|it|they|we)\s+(are|is|am|were|was)\b/ig, 'word order',
+   'In a question the helper verb comes before the person: "where are you", not "where you are".',
+   function(m){ return m[1] + ' ' + m[3] + ' ' + m[2]; }],
+  [/\bcousin\s+(brother|sister)\b/ig, 'word choice',
+   'In English "cousin" covers both, so nothing is added after it.',
+   function(){ return 'cousin'; }],
+  [/\b(my|your)\s+good\s+name\b/ig, 'word choice',
+   '"Good name" is not used in English. Just say "my name" or "your name".',
+   function(m){ return m[1] + ' name'; }],
+  [/\bout\s+of\s+station\b/ig, 'word choice',
+   'English speakers say "out of town" when you are away.',
+   function(){ return 'out of town'; }],
+  [/\bdo\s+the\s+needful\b/ig, 'word choice',
+   'This phrase is not used in English. Say what you actually want done.',
+   function(){ return 'do what is needed'; }],
+  [/\bprepone\b/ig, 'word choice',
+   '"Prepone" is not an English word. Say the meeting was moved earlier.',
+   function(){ return 'bring forward'; }],
+  [/\b(morning|evening|afternoon|night)\s+time\b/ig, 'word choice',
+   '"Time" is not needed here: "in the morning" is enough.',
+   function(m){ return m[1]; }]
+];
+
+function ruleCheck(text){
+  if (!text || !text.trim()) return [];
+  var found = [], claimed = [];
+  RULES.forEach(function(r){
+    var re = new RegExp(r[0].source, 'ig'), m;
+    while ((m = re.exec(text)) !== null){
+      if (m[0] === '') { re.lastIndex++; continue; }
+      var a = m.index, b = m.index + m[0].length;
+      var clash = claimed.some(function(c){ return a < c[1] && c[0] < b; });
+      if (clash) continue;
+      var said = m[0].trim(), better = String(r[3](m)).trim();
+      if (said.toLowerCase() === better.toLowerCase()) continue;
+      claimed.push([a,b]);
+      found.push({ said:said, better:better, why:r[2], category:r[1] });
+    }
+  });
+  return found;
+}
+
+function mergeMistakes(transcript, fromModel){
+  /* Model hits first so their tailored explanation wins over the generic rule. */
+  return verifyMistakes(transcript, (fromModel||[]).concat(ruleCheck(transcript))).slice(0,5);
+}
+
+/* =========================================================================
+   Spaced repetition (SM-2).
+
+   Drills re-test the mistakes you actually made, on the schedule SM-2
+   dictates, rather than picking at random.
+   ========================================================================= */
+function today(){ return Math.floor(Date.now()/86400000); }
+
+function signature(m){
+  return (m.category||'other') + '|' + normWords(m.said).join(' ') + '|' + normWords(m.better).join(' ');
+}
+
+function sm2(card, quality){
+  var d = 0.1 - (5-quality) * (0.08 + (5-quality) * 0.02);
+  var ef = Math.max(1.3, (card.ef || 2.5) + d);
+  if (quality >= 3){
+    var reps = (card.reps || 0) + 1;
+    var iv = reps === 1 ? 1 : reps === 2 ? 6
+           : Math.max(Math.round((card.iv || 1) * ef), (card.iv || 1) + 1);
+    iv = Math.min(iv, 365);
+    card.reps = reps; card.iv = iv; card.ef = ef; card.due = today() + iv;
+  } else {
+    /* A lapse resets the ladder but keeps the easiness it has earned, so a
+       hard item stays hard. */
+    card.reps = 0; card.iv = 1; card.ef = ef; card.due = today() + 1;
+    card.lapses = (card.lapses || 0) + 1;
+  }
+  card.last = Date.now();
+  return card;
+}
+
+function recordMistakes(list, sentence){
+  list.forEach(function(m){
+    var sig = signature(m);
+    var existing = null;
+    for (var i=0;i<cards.length;i++){ if (cards[i].sig === sig) { existing = cards[i]; break; } }
+    if (existing){
+      /* Making it again means it is not learned, so it becomes due at once
+         regardless of its old schedule. */
+      existing.seen = (existing.seen || 1) + 1;
+      existing.due  = Math.min(existing.due, today());
+      existing.reps = 0; existing.iv = 1;
+      existing.lapses = (existing.lapses || 0) + 1;
+    } else {
+      cards.push({ sig:sig, said:m.said, better:m.better, why:m.why,
+                   category:m.category, sentence:sentence, seen:1,
+                   reps:0, iv:0, ef:2.5, due:today(), lapses:0, created:Date.now() });
+    }
+  });
+  saveCards();
+}
+
+function dueCards(){
+  var t = today();
+  return cards.filter(function(c){ return (c.due||0) <= t; })
+              .sort(function(a,b){ return (b.seen||0)-(a.seen||0); });
+}
+
+/* Grades a spoken drill attempt with no model call: one right answer, exact
+   check, about two seconds instead of fifteen. */
+function gradeDrill(spoken, fix, mistake){
+  var said = normWords(spoken), f = normWords(fix), w = normWords(mistake);
+  var usedFix  = f.length && containsRun(said, f);
+  var repeated = w.length && containsRun(said, w);
+  var grade = repeated ? 1 : !usedFix ? 1 : (said.length <= f.length + 6 ? 5 : 4);
+  return { grade:grade, usedFix:!!usedFix, repeated:!!repeated };
+}
+
+/* =========================================================================
+   Audio capture. Unchanged and load-bearing: this is the part already proven
+   to work in iOS Safari, which needs audio/mp4 and has no SpeechRecognition.
+   ========================================================================= */
+function showErr(el, msg){ var e = $(el); e.textContent = msg; e.classList.remove('hide'); }
+function clearErr(el){ $(el).classList.add('hide'); }
+function setHint(t){ $('hint').textContent = t; }
+
+$('mic').onclick = function(){ recording ? stopRec() : startRec(); };
+
+function startRec(){
+  if (busy) return;
+  if (tab === 'progress') { setTab('talk'); return; }
+  if (tab === 'drill' && !drillQueue.length) return;
+  clearErr('err'); clearErr('readErr'); clearErr('drillErr');
+
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    showErr(errBox(), "This browser can't reach the microphone. Open the page in Safari over https.");
+    return;
+  }
+  navigator.mediaDevices.getUserMedia({ audio:{ channelCount:1, echoCancellation:true, noiseSuppression:true } })
+  .then(function(s){
+    stream = s; chunks = [];
+    var opts = {};
+    /* audio/mp4 first: it is the one Safari on iOS supports. */
+    var cands = ['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg;codecs=opus'];
+    if (window.MediaRecorder && MediaRecorder.isTypeSupported) {
+      for (var i=0;i<cands.length;i++){ if (MediaRecorder.isTypeSupported(cands[i])) { opts.mimeType = cands[i]; break; } }
+    }
+    try { recorder = new MediaRecorder(stream, opts); } catch(e){ recorder = new MediaRecorder(stream); }
+    recorder.ondataavailable = function(ev){ if (ev.data && ev.data.size) chunks.push(ev.data); };
+    recorder.onstop = function(){
+      stopTracks();
+      var blob = new Blob(chunks, { type: (recorder && recorder.mimeType) || 'audio/mp4' });
+      var secs = (Date.now()-startedAt)/1000;
+      if (blob.size < 1200) {
+        setHint(idleHint());
+        showErr(errBox(), "That was too short — hold on and speak a full sentence.");
+        return;
+      }
+      dispatch(blob, secs);
+    };
+    recorder.start();
+    recording = true; startedAt = Date.now();
+    $('mic').classList.add('rec'); $('mic').innerHTML = '&#9632;';
+    timer = setInterval(tick, 200); tick();
+  })
+  .catch(function(){
+    showErr(errBox(), "I couldn't get microphone access. Allow the mic for this site in Settings \u2192 Safari \u2192 Microphone, then reload.");
+  });
+}
+
+function tick(){
+  var s = Math.floor((Date.now()-startedAt)/1000);
+  setHint('Recording… ' + s + 's  ·  tap to stop');
+  if (s >= 45) stopRec();
+}
+
+function stopRec(){
+  if (!recording) return;
+  recording = false;
+  clearInterval(timer); timer = null;
+  $('mic').classList.remove('rec'); $('mic').innerHTML = '&#127908;';
+  setHint('Working…');
+  try { recorder.stop(); } catch(e){ stopTracks(); }
+}
+
+function stopTracks(){ if (stream) { stream.getTracks().forEach(function(t){ t.stop(); }); stream = null; } }
+
+/* ---- decode → mono 16 kHz → WAV → base64 ---- */
+function decode(arrayBuffer){
+  var Ctx = window.AudioContext || window.webkitAudioContext;
+  var ctx = new Ctx();
+  return new Promise(function(res, rej){
+    var done = function(b){ try { ctx.close(); } catch(e){} res(b); };
+    var fail = function(e){ try { ctx.close(); } catch(e2){} rej(new Error("I couldn't read that recording. Try again.")); };
+    var p = ctx.decodeAudioData(arrayBuffer, done, fail);
+    if (p && p.then) p.then(done).catch(fail);
+  });
+}
+
+function toMono16k(buf){
+  var chs = buf.numberOfChannels, len = buf.length, i, c;
+  var mono = new Float32Array(len);
+  for (c=0;c<chs;c++){ var d = buf.getChannelData(c); for (i=0;i<len;i++) mono[i] += d[i]/chs; }
+  var ratio = buf.sampleRate / 16000;
+  if (Math.abs(ratio-1) < 0.01) return mono;
+  var outLen = Math.floor(len / ratio);
+  var out = new Float32Array(outLen);
+  for (i=0;i<outLen;i++){
+    var pos = i*ratio, i0 = Math.floor(pos), frac = pos-i0;
+    var a = mono[i0] || 0, b = mono[i0+1] === undefined ? a : mono[i0+1];
+    out[i] = a + (b-a)*frac;
+  }
+  return out;
+}
+
+function encodeWav(samples, rate){
+  var v = new DataView(new ArrayBuffer(44 + samples.length*2));
+  function str(o,s){ for (var i=0;i<s.length;i++) v.setUint8(o+i, s.charCodeAt(i)); }
+  str(0,'RIFF'); v.setUint32(4, 36 + samples.length*2, true); str(8,'WAVE');
+  str(12,'fmt '); v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true);
+  v.setUint32(24,rate,true); v.setUint32(28,rate*2,true); v.setUint16(32,2,true); v.setUint16(34,16,true);
+  str(36,'data'); v.setUint32(40, samples.length*2, true);
+  for (var i=0;i<samples.length;i++){
+    var s = Math.max(-1, Math.min(1, samples[i]));
+    v.setInt16(44+i*2, s<0 ? s*0x8000 : s*0x7FFF, true);
+  }
+  return new Blob([v], { type:'audio/wav' });
+}
+
+function toBase64(blob){
+  return new Promise(function(res, rej){
+    var fr = new FileReader();
+    fr.onload = function(){ var s = String(fr.result); res(s.slice(s.indexOf(',')+1)); };
+    fr.onerror = function(){ rej(new Error("Couldn't process the audio.")); };
+    fr.readAsDataURL(blob);
+  });
+}
+
+/* =========================================================================
+   Gemini. Model names change over time, so a 404 walks down a fallback chain
+   rather than dead-ending.
+   ========================================================================= */
+var FALLBACKS = ['gemini-flash-latest','gemini-2.5-flash','gemini-2.0-flash'];
+
+function callGemini(b64, schema, prompt){
+  var tried = [];
+  function attempt(mdl){
+    tried.push(mdl);
+    var url = "https://generativelanguage.googleapis.com/v1beta/models/" + encodeURIComponent(mdl) + ":generateContent";
+    return fetch(url, {
+      method:"POST",
+      headers:{ "Content-Type":"application/json", "x-goog-api-key": apiKey },
+      body: JSON.stringify({
+        contents:[{ parts:[ { text: prompt }, { inlineData:{ mimeType:"audio/wav", data:b64 } } ] }],
+        generationConfig:{ responseMimeType:"application/json", responseSchema:schema, temperature:0.2 }
+      })
+    }).then(function(r){
+      if (r.status === 404){
+        for (var i=0;i<FALLBACKS.length;i++){
+          if (tried.indexOf(FALLBACKS[i]) === -1) return attempt(FALLBACKS[i]);
+        }
+      }
+      return r;
+    });
+  }
+  return attempt(model);
+}
+
+function readReply(r){
+  return r.text().then(function(t){
+    var j = null; try { j = JSON.parse(t); } catch(e){}
+    if (!r.ok){
+      var m = (j && j.error && j.error.message) || ('HTTP ' + r.status);
+      if (r.status === 400 && /API key/i.test(m)) throw new Error("That API key was rejected. Tap the gear icon and paste it again.");
+      if (r.status === 403) throw new Error("That API key was refused. Check it at aistudio.google.com/apikey.");
+      if (r.status === 429) throw new Error("You've hit today's free limit. Try again in a few minutes.");
+      throw new Error(m);
+    }
+    var txt = j && j.candidates && j.candidates[0] && j.candidates[0].content
+              && j.candidates[0].content.parts && j.candidates[0].content.parts[0]
+              && j.candidates[0].content.parts[0].text;
+    if (!txt) throw new Error("Empty reply from the model. Try recording again.");
+    return JSON.parse(txt);
+  });
+}
+
+var TALK_SCHEMA = {
+  type:"object",
+  properties:{
+    no_speech:{type:"boolean"},
+    transcript:{type:"string"},
+    corrected:{type:"string"},
+    mistakes:{ type:"array", items:{ type:"object", properties:{
+      said:{type:"string"}, better:{type:"string"}, why:{type:"string"}, category:{type:"string"}
+    }, required:["said","better","why","category"] } },
+    reply:{type:"string"},
+    pronunciation:{ type:"array", items:{ type:"object", properties:{
+      word:{type:"string"}, heard:{type:"string"}, tip:{type:"string"}
+    }, required:["word","heard","tip"] } },
+    fillers:{ type:"array", items:{type:"string"} },
+    pace_wpm:{type:"integer"},
+    encouragement:{type:"string"}
+  },
+  required:["no_speech","transcript","corrected","mistakes","reply","pronunciation","fillers","pace_wpm","encouragement"]
+};
+
+var READ_SCHEMA = {
+  type:"object",
+  properties:{
+    no_speech:{type:"boolean"},
+    transcript:{type:"string"},
+    words:{ type:"array", items:{ type:"object", properties:{
+      expected:{type:"string"}, heard:{type:"string"},
+      outcome:{type:"string"}, tip:{type:"string"}
+    }, required:["expected","heard","outcome","tip"] } },
+    rhythm:{type:"string"},
+    pace_wpm:{type:"integer"}
+  },
+  required:["no_speech","transcript","words","rhythm","pace_wpm"]
+};
+
+var DRILL_SCHEMA = {
+  type:"object",
+  properties:{ no_speech:{type:"boolean"}, transcript:{type:"string"} },
+  required:["no_speech","transcript"]
+};
+
+function talkPrompt(){
+  return [
+"You are a patient, warm English speaking tutor for an adult self-learner.",
+"You are given an audio recording of the learner speaking English. Judge the AUDIO itself, not only the words.",
+l1 ? ("The learner's first language is " + l1 + ". Expect the typical interference patterns of that language.") : "",
+"",
+"Rules:",
+"- transcript: write EXACTLY what you hear, including grammar errors, filler words and false starts. Never silently fix anything.",
+"- If there is no intelligible speech, set no_speech true and leave the other fields empty or zero.",
+"- corrected: the smallest correction that makes it correct English. Keep their meaning. If it was already correct, repeat it unchanged and return an empty mistakes list.",
+"- mistakes: one entry per real error. category is one of: tense, article, preposition, plural, word order, word choice, other.",
+"  'said' is the exact wrong fragment copied from your own transcript, 'better' is the fix, 'why' is one or two plain sentences with no grammar jargon. Never invent errors that are not there.",
+"- reply: one or two warm sentences reacting to what they said, then one question to keep them talking. Never mention grammar in the reply.",
+"- pronunciation: ONLY words that genuinely sounded unclear in the audio. 'heard' is what it actually sounded like. 'tip' is a physical instruction about tongue, lips or stress. Empty list if the pronunciation was fine. Do not invent problems to seem useful.",
+"- fillers: filler sounds actually used (um, uh, er). Empty list if none.",
+"- pace_wpm: your best estimate of their speaking speed in words per minute.",
+"- encouragement: one short, specific, warm sentence naming something they actually did well.",
+"Be brief and never condescending."
+  ].filter(Boolean).join("\n");
+}
+
+function readPrompt(target){
+  return [
+"You are an English pronunciation coach. The learner was asked to read one sentence aloud.",
+l1 ? ("Their first language is " + l1 + ".") : "",
+"",
+'The sentence on screen was exactly: "' + target + '"',
+"",
+"Compare the AUDIO against that sentence, word by word.",
+"- transcript: exactly what you heard, errors intact.",
+"- words: one entry per word of the TARGET sentence, in order. 'expected' is the target word.",
+"  'heard' is what that word actually sounded like ('' if it was not said at all).",
+"  'outcome' is exactly one of: correct, unclear, substituted, missing.",
+"  'tip' is a short physical instruction (tongue, lips, stress) ONLY when the outcome is not correct; otherwise ''.",
+"- Be strict but fair: mark 'correct' when a listener would have understood the word without effort.",
+"- rhythm: one sentence on their rhythm and stress. If every syllable got equal length, say so and explain that English stretches the important syllables.",
+"- pace_wpm: estimated words per minute."
+  ].filter(Boolean).join("\n");
+}
+
+/* =========================================================================
+   Dispatch a recording to whichever mode is open
+   ========================================================================= */
+function errBox(){ return tab === 'read' ? 'readErr' : tab === 'drill' ? 'drillErr' : 'err'; }
+function idleHint(){
+  if (tab === 'read')  return 'Tap and read the sentence above';
+  if (tab === 'drill') return drillQueue.length ? 'Tap and say it correctly' : 'Nothing due today';
+  return 'Tap, speak a sentence, tap again';
+}
+
+function dispatch(blob, secs){
+  if (tab === 'read')  return runRead(blob, secs);
+  if (tab === 'drill') return runDrill(blob, secs);
+  return runTalk(blob, secs);
+}
+
+function prepare(blob){
+  return blob.arrayBuffer().then(decode)
+    .then(function(buf){ return toBase64(encodeWav(toMono16k(buf), 16000)); });
+}
+
+function finish(spinner){
+  busy = false; $('mic').disabled = false;
+  $(spinner).classList.add('hide');
+  setHint(idleHint());
+}
+
+/* ---------------- Talk ---------------- */
+function runTalk(blob, secs){
+  busy = true; clearErr('err');
+  $('thinking').classList.remove('hide');
+  $('results').innerHTML = '';
+  $('mic').disabled = true;
+
+  prepare(blob)
+  .then(function(b64){ return callGemini(b64, TALK_SCHEMA, talkPrompt()); })
+  .then(readReply)
+  .then(function(d){
+    if (d.no_speech || !String(d.transcript||'').trim()){
+      showErr('err', "I couldn't hear any clear speech. Try again, a little closer to the phone.");
+      return;
+    }
+    var verified = mergeMistakes(d.transcript, d.mistakes);
+    var wc = words(d.transcript).length;
+    var wpm = d.pace_wpm || (secs > 0 ? Math.round(wc*60/secs) : 0);
+
+    history.push({
+      at:Date.now(), day:today(), mode:'talk',
+      transcript:d.transcript, corrected:verified.length ? d.corrected : d.transcript,
+      mistakes:verified, wpm:wpm, words:wc,
+      fillers:(d.fillers||[]).length, secs:Math.round(secs)
+    });
+    saveHist();
+    recordMistakes(verified, d.transcript);
+    renderTalk(d, verified, wpm, wc);
+    refreshTabs();
+  })
+  .catch(function(e){ showErr('err', e && e.message ? e.message : "Something went wrong. Try again."); })
+  .then(function(){ finish('thinking'); });
+}
+
+/* ---------------- Read aloud ---------------- */
+function runRead(blob, secs){
+  busy = true; clearErr('readErr');
+  $('readThinking').classList.remove('hide');
+  $('readResults').innerHTML = '';
+  $('mic').disabled = true;
+  var target = SENTENCES[readIdx % SENTENCES.length][0];
+
+  prepare(blob)
+  .then(function(b64){ return callGemini(b64, READ_SCHEMA, readPrompt(target)); })
+  .then(readReply)
+  .then(function(d){
+    if (d.no_speech || !String(d.transcript||'').trim()){
+      showErr('readErr', "I couldn't hear any clear speech. Try again.");
+      return;
+    }
+    var list = (d.words||[]).filter(function(w){ return w && w.expected; });
+    var good = list.filter(function(w){ return w.outcome === 'correct'; }).length;
+    var pct  = list.length ? Math.round(good*100/list.length) : 0;
+
+    history.push({
+      at:Date.now(), day:today(), mode:'read',
+      transcript:d.transcript, corrected:target, mistakes:[],
+      wpm:d.pace_wpm || 0, words:words(target).length,
+      fillers:0, secs:Math.round(secs), accuracy:pct
+    });
+    saveHist();
+    renderRead(target, list, pct, d);
+    refreshTabs();
+  })
+  .catch(function(e){ showErr('readErr', e && e.message ? e.message : "Something went wrong. Try again."); })
+  .then(function(){ finish('readThinking'); });
+}
+
+/* ---------------- Drill ---------------- */
+function runDrill(blob){
+  var card = drillQueue[drillPos];
+  if (!card) return;
+  busy = true; clearErr('drillErr');
+  $('drillThinking').classList.remove('hide');
+  $('mic').disabled = true;
+
+  prepare(blob)
+  .then(function(b64){
+    return callGemini(b64, DRILL_SCHEMA,
+      "Transcribe this English audio exactly as spoken, including any errors. " +
+      "Set no_speech true if there is no intelligible speech.");
+  })
+  .then(readReply)
+  .then(function(d){
+    if (d.no_speech || !String(d.transcript||'').trim()){
+      showErr('drillErr', "I couldn't hear that. Try again.");
+      return;
+    }
+    drillResult = gradeDrill(d.transcript, card.better, card.said);
+    drillResult.heard = d.transcript;
+    renderDrill();
+  })
+  .catch(function(e){ showErr('drillErr', e && e.message ? e.message : "Something went wrong. Try again."); })
+  .then(function(){ finish('drillThinking'); });
+}
+
+/* =========================================================================
+   Rendering
+   ========================================================================= */
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g, function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+function diff(a, b){
+  var n = a.length, m = b.length, i, j;
+  var dp = []; for (i=0;i<=n;i++){ dp.push(new Array(m+1).fill(0)); }
+  for (i=n-1;i>=0;i--) for (j=m-1;j>=0;j--)
+    dp[i][j] = norm(a[i]) === norm(b[j]) ? dp[i+1][j+1]+1 : Math.max(dp[i+1][j], dp[i][j+1]);
+  var out = []; i = 0; j = 0;
+  while (i<n && j<m){
+    if (norm(a[i]) === norm(b[j])) { out.push({t:'=', w:b[j]}); i++; j++; }
+    else if (dp[i+1][j] >= dp[i][j+1]) { out.push({t:'-', w:a[i]}); i++; }
+    else { out.push({t:'+', w:b[j]}); j++; }
+  }
+  while (i<n) out.push({t:'-', w:a[i++]});
+  while (j<m) out.push({t:'+', w:b[j++]});
+  return out;
+}
+
+function diffHtml(said, fixed){
+  return diff(words(said), words(fixed)).map(function(p){
+    if (p.t === '=') return esc(p.w);
+    if (p.t === '-') return '<span class="del">' + esc(p.w) + '</span>';
+    return '<span class="ins">' + esc(p.w) + '</span>';
+  }).join(' ');
+}
+
+function speak(text, rate){
+  if (!window.speechSynthesis) return;
+  try {
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-GB'; u.rate = rate || 0.92;
+    var vs = window.speechSynthesis.getVoices() || [];
+    for (var i=0;i<vs.length;i++){ if (/en-GB|en_GB/i.test(vs[i].lang)) { u.voice = vs[i]; break; } }
+    window.speechSynthesis.speak(u);
+  } catch(e){}
+}
+window.__speak = speak;
+
+function card(title, inner){
+  return '<div class="card">' + (title ? '<h3>'+esc(title)+'</h3>' : '') + inner + '</div>';
+}
+
+function renderTalk(d, mistakes, wpm, wc){
+  var h = '';
+
+  if (mistakes.length){
+    h += card('What you said', '<p style="margin:0;font-size:17px;line-height:1.5">' +
+              diffHtml(d.transcript, d.corrected) + '</p>');
+    var body = mistakes.map(function(m){
+      return '<div style="margin-bottom:14px">' +
+        '<div style="font-size:16.5px"><s>' + esc(m.said) + '</s> &rarr; <b class="fix">' + esc(m.better) + '</b></div>' +
+        '<div class="small muted" style="margin-top:4px">' + esc(m.why) + '</div>' +
+        '<span class="chip">' + esc(m.category) + '</span>' +
+        '</div>';
+    }).join('<div class="sep"></div>');
+    h += card('What to fix', body);
+  } else {
+    h += card('What you said',
+      '<p style="margin:0 0 8px;font-size:17px">' + esc(d.transcript) + '</p>' +
+      '<p class="small" style="margin:0;color:var(--good);font-weight:600">That was correct.</p>');
+  }
+
+  if ((d.pronunciation||[]).length){
+    var pr = d.pronunciation.map(function(p){
+      return '<div style="margin-bottom:12px">' +
+        '<div style="font-size:16.5px;font-weight:600">' + esc(p.word) +
+          (p.heard && norm(p.heard)!==norm(p.word) ? ' <span class="muted small">sounded like "'+esc(p.heard)+'"</span>' : '') +
+        '</div>' +
+        '<div class="small muted" style="margin:4px 0 6px">' + esc(p.tip) + '</div>' +
+        '<button class="btn ghost small" style="width:auto;padding:0 14px" onclick="__speak(' +
+          JSON.stringify(p.word).replace(/"/g,'&quot;') + ', 0.5)">&#128266; Slowly</button>' +
+        '</div>';
+    }).join('<div class="sep"></div>');
+    h += card('Sounds to watch', pr);
+  }
+
+  if (String(d.reply||'').trim()){
+    h += card('Tutor',
+      '<p style="margin:0 0 10px;font-size:17px">' + esc(d.reply) + '</p>' +
+      '<button class="btn ghost small" style="width:auto;padding:0 14px" onclick="__speak(' +
+        JSON.stringify(d.reply).replace(/"/g,'&quot;') + ')">&#128266; Hear it</button>');
+  }
+
+  h += card('This turn',
+    '<div class="stats">' +
+      '<div class="stat"><b>' + wpm + '</b><span>words / min</span></div>' +
+      '<div class="stat"><b>' + wc + '</b><span>words</span></div>' +
+      '<div class="stat"><b>' + mistakes.length + '</b><span>mistakes</span></div>' +
+    '</div>' +
+    (d.encouragement ? '<p class="small muted" style="margin:14px 0 0">' + esc(d.encouragement) + '</p>' : ''));
+
+  $('results').innerHTML = h;
+  if (String(d.reply||'').trim()) speak(d.reply);
+}
+
+function renderRead(target, list, pct, d){
+  var coloured = list.length
+    ? list.map(function(w){
+        var cls = w.outcome === 'correct' ? 'ok' : w.outcome === 'missing' ? 'miss' : 'bad';
+        return '<span class="' + cls + '">' + esc(w.expected) + '</span>';
+      }).join(' ')
+    : esc(target);
+  $('readTarget').innerHTML = coloured;
+
+  var bad = list.filter(function(w){ return w.outcome !== 'correct'; }).slice(0,4);
+  var h = card('Result',
+    '<div class="stats">' +
+      '<div class="stat"><b>' + pct + '%</b><span>words clear</span></div>' +
+      '<div class="stat"><b>' + (d.pace_wpm||0) + '</b><span>words / min</span></div>' +
+    '</div>' +
+    (d.rhythm ? '<p class="small muted" style="margin:14px 0 0">' + esc(d.rhythm) + '</p>' : ''));
+
+  if (bad.length){
+    h += card('Work on these', bad.map(function(w){
+      return '<div style="margin-bottom:12px">' +
+        '<div style="font-size:16.5px;font-weight:600">' + esc(w.expected) +
+          (w.heard ? ' <span class="muted small">sounded like "'+esc(w.heard)+'"</span>'
+                   : ' <span class="muted small">not heard</span>') + '</div>' +
+        (w.tip ? '<div class="small muted" style="margin:4px 0 6px">' + esc(w.tip) + '</div>' : '') +
+        '<button class="btn ghost small" style="width:auto;padding:0 14px" onclick="__speak(' +
+          JSON.stringify(w.expected).replace(/"/g,'&quot;') + ', 0.5)">&#128266; Slowly</button>' +
+        '</div>';
+    }).join('<div class="sep"></div>'));
+  }
+
+  h += card('Heard', '<p class="small muted" style="margin:0">"' + esc(d.transcript) + '"</p>' +
+    '<p class="small muted" style="margin:10px 0 0">Compared against the sentence on screen, so these ' +
+    'observations are about the audio, not a guess.</p>');
+
+  $('readResults').innerHTML = h;
+}
+
+function paintRead(){
+  var s = SENTENCES[readIdx % SENTENCES.length];
+  $('readFocus').textContent = s[1];
+  $('readTarget').textContent = s[0];
+  $('readResults').innerHTML = '';
+  clearErr('readErr');
+}
+
+function renderDrill(){
+  var t = today();
+  if (!drillQueue.length){
+    $('drillBody').innerHTML = card(null,
+      '<p style="margin:0 0 6px;font-size:17px;font-weight:600">' +
+        (drillDone ? 'Done for today' : 'Nothing due yet') + '</p>' +
+      '<p class="small muted" style="margin:0">' +
+        (drillDone
+          ? 'You reviewed ' + drillDone + (drillDone===1 ? ' mistake.' : ' mistakes.')
+          : 'Drills are built from your own mistakes. Talk first, and whatever you get wrong ' +
+            'will come back here on a schedule.') + '</p>');
+    return;
+  }
+  var c = drillQueue[drillPos];
+  if (!c){
+    drillQueue = []; renderDrill(); return;
+  }
+
+  var h = '<p class="small muted" style="margin:0 0 10px">' + (drillPos+1) + ' of ' + drillQueue.length + '</p>';
+  h += card('You said this before',
+    '<p class="small muted" style="margin:0 0 12px">"' + esc(c.sentence) + '"</p>' +
+    '<div class="sep"></div>' +
+    '<p style="margin:0 0 8px;font-size:17px;font-weight:600">Say it again, correctly</p>' +
+    '<div style="font-size:17px"><s>' + esc(c.said) + '</s>' +
+      ((drillResult || drillRevealed) ? ' &rarr; <b class="fix">' + esc(c.better) + '</b>' : '') + '</div>' +
+    ((drillResult || drillRevealed) ? '<div class="small muted" style="margin-top:6px">' + esc(c.why) + '</div>' : '') +
+    '<div style="margin-top:10px"><span class="chip">' + esc(c.category) + '</span>' +
+      (c.seen > 1 ? ' <span class="small muted">made ' + c.seen + ' times</span>' : '') + '</div>');
+
+  if (drillResult){
+    h += card(null,
+      '<p style="margin:0 0 6px;font-size:17px;font-weight:600;color:' +
+        (drillResult.grade >= 3 ? 'var(--good)' : 'var(--warn)') + '">' +
+        (drillResult.grade >= 3 ? "That's it." : 'Not quite yet.') + '</p>' +
+      '<p class="small muted" style="margin:0 0 10px">' +
+        (drillResult.repeated ? 'You used the old wording again, so this comes back tomorrow.'
+         : !drillResult.usedFix ? "I didn't hear the corrected part, so this comes back tomorrow."
+         : 'Scheduled to come back later.') + '</p>' +
+      '<p class="small muted" style="margin:0 0 14px">Heard: "' + esc(drillResult.heard) + '"</p>' +
+      '<button class="btn small" id="drillNext">Next</button>' +
+      '<div style="height:10px"></div>' +
+      '<div class="row"><button class="btn ghost small" id="drillGot">I got it</button>' +
+      '<button class="btn ghost small" id="drillMissed">I missed it</button></div>');
+  } else {
+    h += '<div class="row">' +
+      '<button class="btn ghost small" id="drillShow">Show answer</button>' +
+      '<button class="btn ghost small" id="drillHear">&#128266; Hear it</button></div>' +
+      '<div style="height:10px"></div>' +
+      '<button class="btn ghost small" id="drillSkip">Skip</button>';
+  }
+  $('drillBody').innerHTML = h;
+
+  function on(id, fn){ var el = $(id); if (el) el.onclick = fn; }
+  on('drillShow', function(){ drillRevealed = true; renderDrill(); });
+  on('drillHear', function(){ speak(c.better, 0.75); });
+  on('drillSkip', function(){ advance(); });
+  on('drillNext', function(){ commit(c, drillResult.grade); });
+  on('drillGot',  function(){ commit(c, 4); });
+  on('drillMissed', function(){ commit(c, 1); });
+}
+
+function commit(c, grade){
+  sm2(c, grade);
+  saveCards();
+  drillDone++;
+  advance();
+}
+function advance(){
+  drillResult = null;
+  drillRevealed = false;
+  drillPos++;
+  if (drillPos >= drillQueue.length) drillQueue = [];
+  renderDrill();
+}
+
+/* ---------------- Progress ---------------- */
+function dailyStats(){
+  var byDay = {};
+  history.forEach(function(t){
+    var d = byDay[t.day] || (byDay[t.day] = { day:t.day, turns:0, words:0, wpmSum:0, wpmN:0, mistakes:0, fillers:0 });
+    d.turns++; d.words += t.words||0; d.mistakes += (t.mistakes||[]).length; d.fillers += t.fillers||0;
+    if (t.wpm > 0) { d.wpmSum += t.wpm; d.wpmN++; }
+  });
+  return Object.keys(byDay).map(function(k){ return byDay[k]; })
+    .sort(function(a,b){ return a.day-b.day; })
+    .map(function(d){
+      d.wpm = d.wpmN ? Math.round(d.wpmSum/d.wpmN) : 0;
+      d.per100 = d.words ? (d.mistakes*100/d.words) : 0;
+      d.fill100 = d.words ? (d.fillers*100/d.words) : 0;
+      return d;
+    });
+}
+
+function streak(){
+  var days = {}; history.forEach(function(t){ days[t.day] = 1; });
+  var list = Object.keys(days).map(Number).sort(function(a,b){ return b-a; });
+  if (!list.length) return 0;
+  var t = today();
+  /* Yesterday still counts as alive: a streak that dies at midnight turns a
+     learning tool into a source of guilt. */
+  if (list[0] < t-1) return 0;
+  var n = 1, expect = list[0]-1;
+  for (var i=1;i<list.length;i++){
+    if (list[i] === expect) { n++; expect--; }
+    else if (list[i] < expect) break;
+  }
+  return n;
+}
+
+function sparkline(vals, band){
+  if (!vals.length) return '<p class="small muted" style="margin:6px 0 0">Not enough practice yet.</p>';
+  var w = 300, h = 90, pad = 6;
+  var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+  if (band){ lo = Math.min(lo, band[0]); hi = Math.max(hi, band[1]); }
+  var span = (hi - lo) || Math.max(hi, 1);
+  var padded = span * 1.2, base = lo - (padded - span)/2;
+  function y(v){ return h - pad - ((v - base)/padded) * (h - pad*2); }
+  function x(i){ return vals.length === 1 ? w/2 : pad + (i/(vals.length-1)) * (w - pad*2); }
+
+  var s = '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true">';
+  if (band){
+    var top = y(band[1]), bot = y(band[0]);
+    s += '<rect x="0" y="'+top.toFixed(1)+'" width="'+w+'" height="'+Math.max(1,bot-top).toFixed(1)+
+         '" fill="var(--accent)" opacity="0.08"/>';
+  }
+  s += '<line x1="0" y1="'+(h-pad)+'" x2="'+w+'" y2="'+(h-pad)+'" stroke="var(--line)" stroke-width="1"/>';
+  if (vals.length === 1){
+    s += '<circle cx="'+(w/2)+'" cy="'+y(vals[0]).toFixed(1)+'" r="4" fill="var(--accent)"/>';
+  } else {
+    var pts = vals.map(function(v,i){ return x(i).toFixed(1)+','+y(v).toFixed(1); }).join(' ');
+    s += '<polyline points="'+pts+'" fill="none" stroke="var(--accent)" stroke-width="2.5" ' +
+         'stroke-linecap="round" stroke-linejoin="round"/>';
+    vals.forEach(function(v,i){
+      s += '<circle cx="'+x(i).toFixed(1)+'" cy="'+y(v).toFixed(1)+'" r="2.5" fill="var(--accent)"/>';
+    });
+  }
+  return s + '</svg>';
+}
+
+function trend(title, value, vals, caption, band){
+  return '<div style="display:flex;justify-content:space-between;align-items:baseline">' +
+    '<span style="font-size:16px;font-weight:600">'+esc(title)+'</span>' +
+    '<span style="font-size:16px;font-weight:600;color:var(--accent)">'+esc(value)+'</span></div>' +
+    (caption ? '<p class="small muted" style="margin:2px 0 0">'+esc(caption)+'</p>' : '') +
+    '<div class="chartwrap">' + sparkline(vals, band) + '</div>';
+}
+
+function renderProgress(){
+  var stats = dailyStats();
+  if (!stats.length){
+    $('progressBody').innerHTML = card(null,
+      '<p style="margin:0 0 6px;font-size:17px;font-weight:600">Nothing to show yet</p>' +
+      '<p class="small muted" style="margin:0">Talk for a minute and your speaking speed, ' +
+      'hesitations and mistakes will start appearing here.</p>');
+    return;
+  }
+  var last = stats[stats.length-1];
+  var mins = Math.round(history.reduce(function(a,t){ return a + (t.secs||0); },0)/60);
+  var due  = dueCards().length;
+
+  var h = card(null,
+    '<div class="stats">' +
+      '<div class="stat"><b>'+streak()+'</b><span>'+(streak()===1?'day in a row':'days in a row')+'</span></div>' +
+      '<div class="stat"><b>'+mins+'</b><span>minutes spoken</span></div>' +
+      '<div class="stat"><b>'+due+'</b><span>drills due</span></div>' +
+    '</div>');
+
+  h += card('Speaking speed', trend('Words per minute', String(last.wpm),
+      stats.filter(function(d){ return d.wpm>0; }).map(function(d){ return d.wpm; }),
+      'The shaded band is the natural conversational range, 120 to 150.', [120,150]));
+
+  h += card('Accuracy', trend('Mistakes per 100 words', last.per100.toFixed(1),
+      stats.filter(function(d){ return d.words>0; }).map(function(d){ return d.per100; }),
+      'Lower is better. A rate, not a count, so longer sessions compare fairly.'));
+
+  h += card('Hesitation', trend('Filler sounds per 100 words', last.fill100.toFixed(1),
+      stats.filter(function(d){ return d.words>0; }).map(function(d){ return d.fill100; }),
+      'Counts um, uh and er. Not "like" or "so", which have real uses.'));
+
+  /* Mistakes you keep making, ranked by how often. */
+  var ranked = cards.slice().sort(function(a,b){ return (b.seen||0)-(a.seen||0); }).slice(0,12);
+  if (ranked.length){
+    h += card('Mistakes you keep making', ranked.map(function(c){
+      return '<div class="histrow"><span><s>'+esc(c.said)+'</s> &rarr; <b class="fix">'+esc(c.better)+'</b></span>' +
+             '<span class="muted">'+(c.seen||1)+'&times;</span></div>';
+    }).join(''));
+  }
+
+  /* Last seven days against the seven before. */
+  var t = today();
+  function totals(from, to){
+    var r = { turns:0, words:0, secs:0, mistakes:0, days:{} };
+    history.forEach(function(x){
+      if (x.day >= from && x.day <= to){
+        r.turns++; r.words += x.words||0; r.secs += x.secs||0;
+        r.mistakes += (x.mistakes||[]).length; r.days[x.day]=1;
+      }
+    });
+    r.active = Object.keys(r.days).length;
+    r.per100 = r.words ? r.mistakes*100/r.words : 0;
+    return r;
+  }
+  var thisWeek = totals(t-6, t), lastWeek = totals(t-13, t-7);
+  function delta(cur, prev, lowerBetter, fmt){
+    if (!prev) return '<span class="small muted">first week</span>';
+    var d = cur - prev;
+    if (Math.abs(d) < 0.05) return '';
+    var better = lowerBetter ? d < 0 : d > 0;
+    return '<span class="small" style="color:' + (better ? 'var(--good)' : 'var(--ink-2)') + '">' +
+           (d>0?'+':'\u2212') + fmt(Math.abs(d)) + '</span>';
+  }
+  h += card('Last 7 days',
+    '<div class="stats">' +
+      '<div class="stat"><b>'+thisWeek.active+'</b><span>of 7 days</span></div>' +
+      '<div class="stat"><b>'+Math.round(thisWeek.secs/60)+'</b><span>minutes</span></div>' +
+      '<div class="stat"><b>'+thisWeek.words+'</b><span>words</span></div>' +
+    '</div>' +
+    '<div class="barrow"><span>Days practised</span><span>'+thisWeek.active+' ' +
+      delta(thisWeek.active, lastWeek.active, false, function(v){ return String(Math.round(v)); })+'</span></div>' +
+    '<div class="barrow"><span>Mistakes per 100 words</span><span>'+thisWeek.per100.toFixed(1)+' ' +
+      delta(thisWeek.per100, lastWeek.per100, true, function(v){ return v.toFixed(1); })+'</span></div>');
+
+  $('progressBody').innerHTML = h;
+}
+
+/* =========================================================================
+   Navigation
+   ========================================================================= */
+function setTab(next){
+  tab = next;
+  ['talk','read','drill','progress'].forEach(function(t){
+    $('tab-'+t).classList.toggle('hide', t !== next);
+  });
+  Array.prototype.forEach.call($('tabs').children, function(b){
+    b.classList.toggle('on', b.getAttribute('data-tab') === next);
+  });
+  $('setup').classList.add('hide');
+  $('settings').classList.add('hide');
+  $('bottom').classList.remove('hide');
+  /* Progress is the one screen with nothing to record. */
+  $('recbar').classList.toggle('hide', next === 'progress');
+
+  if (next === 'read') paintRead();
+  if (next === 'drill'){
+    if (!drillQueue.length){ drillQueue = dueCards(); drillPos = 0; drillResult = null; drillRevealed = false; }
+    renderDrill();
+  }
+  if (next === 'progress') renderProgress();
+  setHint(idleHint());
+  window.scrollTo(0,0);
+}
+
+Array.prototype.forEach.call($('tabs').children, function(b){
+  b.onclick = function(){ setTab(b.getAttribute('data-tab')); };
+});
+
+function refreshTabs(){
+  if (tab === 'progress') renderProgress();
+}
+
+function boot(){
+  if (!apiKey){
+    $('setup').classList.remove('hide');
+    ['talk','read','drill','progress'].forEach(function(t){ $('tab-'+t).classList.add('hide'); });
+    $('settings').classList.add('hide');
+    $('bottom').classList.add('hide');
+    return;
+  }
+  newPrompt();
+  setTab(tab);
+}
+
+function newPrompt(){ $('promptText').textContent = PROMPTS[Math.floor(Math.random()*PROMPTS.length)]; }
+$('newPrompt').onclick = newPrompt;
+
+$('readNext').onclick = function(){
+  readIdx = (readIdx + 1) % SENTENCES.length;
+  store.set('ec_readidx', String(readIdx));
+  paintRead();
+};
+$('readHear').onclick = function(){ speak(SENTENCES[readIdx % SENTENCES.length][0], 0.85); };
+
+$('gear').onclick = function(){
+  if (!$('settings').classList.contains('hide')) { boot(); return; }
+  $('key2').value = apiKey; $('model').value = model; $('l1').value = l1;
+  ['talk','read','drill','progress'].forEach(function(t){ $('tab-'+t).classList.add('hide'); });
+  $('setup').classList.add('hide');
+  $('settings').classList.remove('hide');
+  $('recbar').classList.add('hide');
+  window.scrollTo(0,0);
+};
+$('save').onclick = function(){
+  var v = $('key').value.trim();
+  if (!v) { $('key').focus(); return; }
+  apiKey = v; store.set('ec_key', v); boot();
+};
+$('save2').onclick = function(){
+  apiKey = $('key2').value.trim(); store.set('ec_key', apiKey);
+  model = ($('model').value.trim() || 'gemini-flash-latest'); store.set('ec_model', model);
+  l1 = $('l1').value.trim(); store.set('ec_l1', l1);
+  boot();
+};
+$('clearHist').onclick = function(){
+  if (!window.confirm('Delete all your history and drills on this phone? This cannot be undone.')) return;
+  history = []; cards = []; saveHist(); saveCards();
+  drillQueue = []; drillDone = 0;
+  boot();
+};
+
+/* ---- backup: the only copy that survives losing the phone ---- */
+$('exportBtn').onclick = function(){
+  var blob = new Blob([JSON.stringify({
+    formatVersion:1, exportedAt:Date.now(), history:history, cards:cards
+  }, null, 2)], { type:'application/json' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'speak-backup.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+};
+$('importBtn').onclick = function(){ $('importFile').click(); };
+$('importFile').onchange = function(){
+  var f = this.files && this.files[0];
+  if (!f) return;
+  var fr = new FileReader();
+  fr.onload = function(){
+    try {
+      var d = JSON.parse(String(fr.result));
+      /* Merge rather than replace, keyed on signature, so importing onto a
+         phone that has already been used adds history instead of destroying it. */
+      (d.history||[]).forEach(function(t){ history.push(t); });
+      history.sort(function(a,b){ return (a.at||0)-(b.at||0); });
+      (d.cards||[]).forEach(function(c){
+        var found = null;
+        for (var i=0;i<cards.length;i++){ if (cards[i].sig === c.sig) { found = cards[i]; break; } }
+        if (!found) cards.push(c);
+        else {
+          found.seen = Math.max(found.seen||1, c.seen||1);
+          found.due  = Math.min(found.due||0, c.due||0);
+        }
+      });
+      saveHist(); saveCards();
+      window.alert('Imported ' + (d.history||[]).length + ' turns.');
+      boot();
+    } catch(e){ window.alert('That file could not be read.'); }
+  };
+  fr.readAsText(f);
+  this.value = '';
+};
+
+/* iOS needs the voice list warmed before the first utterance sounds right. */
+if (window.speechSynthesis){
+  window.speechSynthesis.getVoices();
+  window.speechSynthesis.onvoiceschanged = function(){ window.speechSynthesis.getVoices(); };
+}
+
+boot();
+})();
+</script>
+</body>
+</html>

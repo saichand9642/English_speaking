@@ -1,0 +1,32 @@
+# ---- Android / Gradle ----
+*.iml
+.gradle/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+.kotlin/
+
+# ---- IDE ----
+.idea/
+*.hprof
+
+# ---- Signing: never commit keys ----
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+
+# ---- Model files: fetched at build time or on first run, never committed ----
+*.bin
+*.gguf
+*.task
+app/src/main/assets/models/
+
+# ---- Native dependency checkouts fetched by CMake ----
+native-deps/
+
+# ---- OS noise ----
+.DS_Store
+Thumbs.db

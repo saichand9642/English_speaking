@@ -1,0 +1,1115 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.xctest",
+      "packagePath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios",
+      "productName" : "SpeakCorePackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+    "SpeakCorePackageDiscoveredTests"
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.SpeakCore-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc",
+      "fileList" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/sources",
+      "importPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/CorrectionVerifier.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/DiffAligner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Feedback.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/FluencyAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/PracticeContent.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Pronunciation.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/RhythmAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/RuleBasedChecker.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Sm2Scheduler.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/StreamingReply.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/TutorPrompt.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/TutorResponseParser.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Utterance.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/VoiceActivityDetector.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Words.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/swift-version--71EDDF55A6ED7418.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "SpeakCore",
+      "moduleOutputPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCore.swiftmodule",
+      "objects" : [
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/CorrectionVerifier.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/DiffAligner.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Feedback.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/FluencyAnalyzer.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/PracticeContent.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Pronunciation.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/RhythmAnalyzer.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/RuleBasedChecker.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Sm2Scheduler.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/StreamingReply.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/TutorPrompt.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/TutorResponseParser.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Utterance.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/VoiceActivityDetector.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Words.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j14",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/include/SpeakCore-Swift.h",
+        "-swift-version",
+        "6",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "ios",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/CorrectionVerifier.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/DiffAligner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Feedback.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/FluencyAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/PracticeContent.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Pronunciation.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/RhythmAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/RuleBasedChecker.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Sm2Scheduler.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/StreamingReply.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/TutorPrompt.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/TutorResponseParser.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Utterance.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/VoiceActivityDetector.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Words.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCore.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/CorrectionVerifier.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/DiffAligner.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Feedback.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/FluencyAnalyzer.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/PracticeContent.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Pronunciation.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/RhythmAnalyzer.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/RuleBasedChecker.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Sm2Scheduler.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/StreamingReply.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/TutorPrompt.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/TutorResponseParser.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Utterance.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/VoiceActivityDetector.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Words.swift"
+      ],
+      "tempsPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.SpeakCorePackageDiscoveredTests-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc",
+      "fileList" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/sources",
+      "importPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.derived/SpeakCoreTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.derived/all-discovered-tests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/swift-version--71EDDF55A6ED7418.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCoreTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "SpeakCorePackageDiscoveredTests",
+      "moduleOutputPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCorePackageDiscoveredTests.swiftmodule",
+      "objects" : [
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/SpeakCoreTests.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/all-discovered-tests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j14",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/include/SpeakCorePackageDiscoveredTests-Swift.h",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "ios",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/SpeakCoreTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/all-discovered-tests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCorePackageDiscoveredTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.derived/SpeakCoreTests.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.derived/all-discovered-tests.swift"
+      ],
+      "tempsPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.SpeakCorePackageTests-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc",
+      "fileList" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.build/sources",
+      "importPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.derived/runner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/swift-version--71EDDF55A6ED7418.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCoreTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCorePackageDiscoveredTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "SpeakCorePackageTests",
+      "moduleOutputPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCorePackageTests.swiftmodule",
+      "objects" : [
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.build/runner.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j14",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.build/include/SpeakCorePackageTests-Swift.h",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "ios",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCorePackageTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.derived/runner.swift"
+      ],
+      "tempsPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.SpeakCoreTests-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc",
+      "fileList" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/sources",
+      "importPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/AudioPipelineTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/ContentTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/CorrectionVerifierTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/DiffAlignerTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/ParsingTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/SchedulingTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/StreamingReplyTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/swift-version--71EDDF55A6ED7418.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCore.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "SpeakCoreTests",
+      "moduleOutputPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCoreTests.swiftmodule",
+      "objects" : [
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/AudioPipelineTests.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ContentTests.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/CorrectionVerifierTests.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/DiffAlignerTests.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ParsingTests.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/SchedulingTests.swift.o",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/StreamingReplyTests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j14",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-swift-version",
+        "6",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "ios",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/AudioPipelineTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ContentTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/CorrectionVerifierTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/DiffAlignerTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ParsingTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/SchedulingTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/StreamingReplyTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCoreTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/AudioPipelineTests.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/ContentTests.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/CorrectionVerifierTests.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/DiffAlignerTests.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/ParsingTests.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/SchedulingTests.swift",
+        "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/StreamingReplyTests.swift"
+      ],
+      "tempsPath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "SpeakCore" : [
+      "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc",
+      "-module-name",
+      "SpeakCore",
+      "-package-name",
+      "ios",
+      "-c",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/CorrectionVerifier.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/DiffAligner.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Feedback.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/FluencyAnalyzer.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/PracticeContent.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Pronunciation.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/RhythmAnalyzer.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/RuleBasedChecker.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Sm2Scheduler.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/StreamingReply.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/TutorPrompt.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/TutorResponseParser.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Utterance.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/VoiceActivityDetector.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Words.swift",
+      "-I",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j14",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/include/SpeakCore-Swift.h",
+      "-swift-version",
+      "6",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "ios",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc"
+    ],
+    "SpeakCorePackageDiscoveredTests" : [
+      "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc",
+      "-module-name",
+      "SpeakCorePackageDiscoveredTests",
+      "-package-name",
+      "ios",
+      "-c",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.derived/SpeakCoreTests.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.derived/all-discovered-tests.swift",
+      "-I",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j14",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/include/SpeakCorePackageDiscoveredTests-Swift.h",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "ios",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc"
+    ],
+    "SpeakCorePackageTests" : [
+      "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc",
+      "-module-name",
+      "SpeakCorePackageTests",
+      "-package-name",
+      "ios",
+      "-c",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.derived/runner.swift",
+      "-I",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j14",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.build/include/SpeakCorePackageTests-Swift.h",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "ios",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc"
+    ],
+    "SpeakCoreTests" : [
+      "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc",
+      "-module-name",
+      "SpeakCoreTests",
+      "-package-name",
+      "ios",
+      "-c",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/AudioPipelineTests.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/ContentTests.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/CorrectionVerifierTests.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/DiffAlignerTests.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/ParsingTests.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/SchedulingTests.swift",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/StreamingReplyTests.swift",
+      "-I",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j14",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-swift-version",
+      "6",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "ios",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "SpeakCore" : [
+
+    ],
+    "SpeakCorePackageDiscoveredTests" : [
+      "SpeakCoreTests",
+      "SpeakCore"
+    ],
+    "SpeakCorePackageTests" : [
+      "SpeakCorePackageDiscoveredTests",
+      "SpeakCoreTests",
+      "SpeakCore"
+    ],
+    "SpeakCoreTests" : [
+      "SpeakCore"
+    ]
+  },
+  "testDiscoveryCommands" : {
+    "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.derived/all-discovered-tests.swift" : {
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/AudioPipelineTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ContentTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/CorrectionVerifierTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/DiffAlignerTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ParsingTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/SchedulingTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/StreamingReplyTests.swift.o"
+        }
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.derived/SpeakCoreTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.derived/all-discovered-tests.swift"
+        }
+      ]
+    }
+  },
+  "testEntryPointCommands" : {
+    "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.derived/runner.swift" : {
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/Modules/SpeakCorePackageDiscoveredTests.swiftmodule"
+        }
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.derived/runner.swift"
+        }
+      ]
+    }
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/CorrectionVerifier.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/DiffAligner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Feedback.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/FluencyAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/PracticeContent.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Pronunciation.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/RhythmAnalyzer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/RuleBasedChecker.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Sm2Scheduler.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/StreamingReply.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/TutorPrompt.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/TutorResponseParser.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Utterance.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/VoiceActivityDetector.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Sources/SpeakCore/Words.swift"
+        }
+      ],
+      "outputFilePath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/sources"
+    },
+    "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.derived/SpeakCoreTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.derived/all-discovered-tests.swift"
+        }
+      ],
+      "outputFilePath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/sources"
+    },
+    "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.derived/runner.swift"
+        }
+      ],
+      "outputFilePath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.build/sources"
+    },
+    "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/CorrectionVerifier.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/DiffAligner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Feedback.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/FluencyAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/PracticeContent.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Pronunciation.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/RhythmAnalyzer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/RuleBasedChecker.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Sm2Scheduler.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/SpeakCore.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/StreamingReply.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/TutorPrompt.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/TutorResponseParser.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Utterance.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/VoiceActivityDetector.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCore.build/Words.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/SpeakCorePackageDiscoveredTests.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/SpeakCoreTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageDiscoveredTests.build/all-discovered-tests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.build/SpeakCorePackageTests.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/AudioPipelineTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ContentTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/CorrectionVerifierTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/DiffAlignerTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ParsingTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/SchedulingTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/SpeakCoreTests.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/StreamingReplyTests.swift.o"
+        }
+      ],
+      "outputFilePath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCorePackageTests.product/Objects.LinkFileList"
+    },
+    "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/AudioPipelineTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/ContentTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/CorrectionVerifierTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/DiffAlignerTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/ParsingTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/SchedulingTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/StreamingReplyTests.swift"
+        }
+      ],
+      "outputFilePath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/sources"
+    },
+    "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/swift-version--71EDDF55A6ED7418.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/saichand.kanimeraka/toolchain/swift-6.2.1-RELEASE-ubuntu22.04/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/swift-version--71EDDF55A6ED7418.txt"
+    }
+  }
+}

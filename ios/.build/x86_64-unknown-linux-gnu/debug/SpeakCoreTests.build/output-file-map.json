@@ -1,0 +1,54 @@
+{
+  "": {
+    "swift-dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/master.swiftdeps"
+  },
+  "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/AudioPipelineTests.swift": {
+    "dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/AudioPipelineTests.d",
+    "object": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/AudioPipelineTests.swift.o",
+    "swiftmodule": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/AudioPipelineTests~partial.swiftmodule",
+    "swift-dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/AudioPipelineTests.swiftdeps",
+    "diagnostics": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/AudioPipelineTests.dia"
+  },
+  "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/ContentTests.swift": {
+    "dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ContentTests.d",
+    "object": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ContentTests.swift.o",
+    "swiftmodule": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ContentTests~partial.swiftmodule",
+    "swift-dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ContentTests.swiftdeps",
+    "diagnostics": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ContentTests.dia"
+  },
+  "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/CorrectionVerifierTests.swift": {
+    "dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/CorrectionVerifierTests.d",
+    "object": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/CorrectionVerifierTests.swift.o",
+    "swiftmodule": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/CorrectionVerifierTests~partial.swiftmodule",
+    "swift-dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/CorrectionVerifierTests.swiftdeps",
+    "diagnostics": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/CorrectionVerifierTests.dia"
+  },
+  "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/DiffAlignerTests.swift": {
+    "dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/DiffAlignerTests.d",
+    "object": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/DiffAlignerTests.swift.o",
+    "swiftmodule": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/DiffAlignerTests~partial.swiftmodule",
+    "swift-dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/DiffAlignerTests.swiftdeps",
+    "diagnostics": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/DiffAlignerTests.dia"
+  },
+  "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/ParsingTests.swift": {
+    "dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ParsingTests.d",
+    "object": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ParsingTests.swift.o",
+    "swiftmodule": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ParsingTests~partial.swiftmodule",
+    "swift-dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ParsingTests.swiftdeps",
+    "diagnostics": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/ParsingTests.dia"
+  },
+  "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/SchedulingTests.swift": {
+    "dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/SchedulingTests.d",
+    "object": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/SchedulingTests.swift.o",
+    "swiftmodule": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/SchedulingTests~partial.swiftmodule",
+    "swift-dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/SchedulingTests.swiftdeps",
+    "diagnostics": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/SchedulingTests.dia"
+  },
+  "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/Tests/SpeakCoreTests/StreamingReplyTests.swift": {
+    "dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/StreamingReplyTests.d",
+    "object": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/StreamingReplyTests.swift.o",
+    "swiftmodule": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/StreamingReplyTests~partial.swiftmodule",
+    "swift-dependencies": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/StreamingReplyTests.swiftdeps",
+    "diagnostics": "/home/saichand.kanimeraka/Desktop/Learning/English/English_speaking/ios/.build/x86_64-unknown-linux-gnu/debug/SpeakCoreTests.build/StreamingReplyTests.dia"
+  }
+}
