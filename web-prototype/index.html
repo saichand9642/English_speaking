@@ -148,7 +148,7 @@
   <!-- ===================== TALK ===================== -->
   <section id="tab-talk" class="hide">
     <div class="prompt">
-      <div class="lbl">Try saying</div>
+      <div class="lbl" id="promptLabel">Try saying</div>
       <p id="promptText">Tell me about what you did yesterday.</p>
       <button id="newPrompt">Give me another &rarr;</button>
     </div>
@@ -313,6 +313,10 @@ var readIdx = parseInt(store.get('ec_readidx') || '0', 10) || 0;
 
 var tab = 'talk';
 var busy = false, turnFailed = false;
+/* The last few exchanges. Without this the tutor asks a follow-up question and
+   then has no idea it asked, so the conversation never actually connects. */
+var convo = [];
+var CONVO_TURNS = 3;
 var drillQueue = [], drillPos = 0, drillResult = null, drillDone = 0, drillRevealed = false;
 
 function readJson(k, dflt){ try { return JSON.parse(store.get(k) || 'null') || dflt; } catch(e){ return dflt; } }
@@ -576,8 +580,10 @@ function setHint(t){ $('hint').textContent = t; }
    kept alive. Reacquiring them each turn costs about a second on iOS and makes
    the recording indicator flicker.
    ------------------------------------------------------------------------- */
-var session = { active:false, continuous:false, stream:null, ctx:null, analyser:null, buf:null };
-var turn = { recorder:null, chunks:[], vad:null, startedAt:0, running:false };
+var session = { active:false, continuous:false, stream:null, ctx:null,
+                node:null, sink:null, rate:16000 };
+var turn = { capturing:false, buffers:[], samples:0, startedAt:0,
+             vad:null, lastDb:-100, aborted:false, noSpeech:false, running:false };
 
 /* VAD settings, in the same units as the Android build. */
 var TICK_MS        = 50;   // level is sampled this often
@@ -586,7 +592,7 @@ var SPEECH_MARGIN  = 9;    // dB above the learned floor
 var TRAIL_SILENCE  = 900;  // silence this long ends the turn
 var MIN_SPEECH     = 250;  // shorter than this is a click, not a word
 var NO_SPEECH_STOP = 9000; // give up waiting for a first word
-var MAX_TURN       = 45000;
+var MAX_TURN_MS    = 45000;
 
 $('mic').onclick = function(){
   if (session.active) { endSession('Tap to start talking'); return; }
@@ -605,7 +611,7 @@ function startSession(){
   }
 
   /* Only Talk loops. Read and Drill each have their own next-item step, but
-     they still get the automatic stop, so no second tap anywhere. */
+     they still stop by themselves, so there is no second tap anywhere. */
   session.continuous = (tab === 'talk');
   turnFailed = false;
 
@@ -621,15 +627,25 @@ function startSession(){
 function endSession(hint){
   session.active = false;
   session.continuous = false;
-  stopTurn(true);
+  abortTurn();
   closeMic();
   if (window.speechSynthesis) { try { window.speechSynthesis.cancel(); } catch(e){} }
   paintMic();
   setHint(hint || idleHint());
 }
 
+/* -------------------------------------------------------------------------
+   Audio capture reads raw PCM straight off the microphone graph.
+
+   MediaRecorder is deliberately not used. Recording a whole session means
+   creating a recorder per turn on one long-lived stream, and on iOS Safari the
+   second and later recorders frequently produce empty or truncated blobs. Taking
+   the samples ourselves also removes the encode/decode round trip: we need
+   16 kHz mono PCM in the end anyway, so going through compressed audio and
+   decodeAudioData was pure loss.
+   ------------------------------------------------------------------------- */
 function openMic(){
-  if (session.stream && session.ctx) {
+  if (session.stream && session.ctx){
     /* Safari suspends the context when the page is backgrounded. */
     if (session.ctx.state === 'suspended') return session.ctx.resume().catch(function(){});
     return Promise.resolve();
@@ -640,88 +656,55 @@ function openMic(){
     session.stream = s;
     var Ctx = window.AudioContext || window.webkitAudioContext;
     session.ctx = new Ctx();
-    var src = session.ctx.createMediaStreamSource(s);
-    session.analyser = session.ctx.createAnalyser();
-    session.analyser.fftSize = 1024;
-    session.analyser.smoothingTimeConstant = 0.2;
-    src.connect(session.analyser);
-    session.buf = new Float32Array(session.analyser.fftSize);
+    session.rate = session.ctx.sampleRate || 48000;
+
+    var src  = session.ctx.createMediaStreamSource(s);
+    var node = session.ctx.createScriptProcessor(4096, 1, 1);
+    node.onaudioprocess = onAudio;
+
+    /* A processor only runs while it is connected to the graph, so it is routed
+       to the output through a silent gain node. Zero gain is what keeps the
+       microphone out of the speaker. */
+    var sink = session.ctx.createGain();
+    sink.gain.value = 0;
+    src.connect(node); node.connect(sink); sink.connect(session.ctx.destination);
+
+    session.node = node; session.sink = sink;
     if (session.ctx.state === 'suspended') return session.ctx.resume().catch(function(){});
   });
 }
 
 function closeMic(){
+  if (session.node){ try { session.node.disconnect(); } catch(e){} session.node.onaudioprocess = null; }
+  if (session.sink){ try { session.sink.disconnect(); } catch(e){} }
+  session.node = null; session.sink = null;
   if (session.stream){
     session.stream.getTracks().forEach(function(t){ t.stop(); });
     session.stream = null;
   }
   if (session.ctx){ try { session.ctx.close(); } catch(e){} session.ctx = null; }
-  session.analyser = null; session.buf = null;
 }
 
-/* Frame loudness in dB. getFloatTimeDomainData is missing on older Safari, so
-   fall back to the byte view and convert. */
-function levelDb(){
-  var a = session.analyser;
-  if (!a) return -100;
-  var sum = 0, i, n;
-  if (a.getFloatTimeDomainData && session.buf){
-    a.getFloatTimeDomainData(session.buf);
-    n = session.buf.length;
-    for (i=0;i<n;i++){ sum += session.buf[i]*session.buf[i]; }
-  } else {
-    var b = new Uint8Array(a.fftSize);
-    a.getByteTimeDomainData(b);
-    n = b.length;
-    for (i=0;i<n;i++){ var v = (b[i]-128)/128; sum += v*v; }
+function onAudio(ev){
+  var input = ev.inputBuffer.getChannelData(0);
+  var sum = 0;
+  for (var i=0;i<input.length;i++){ sum += input[i]*input[i]; }
+  turn.lastDb = 20 * Math.log10(Math.sqrt(sum/input.length) + 1e-10);
+  if (turn.capturing && turn.samples < session.rate * 60){
+    turn.buffers.push(new Float32Array(input));   // copy: the buffer is reused
+    turn.samples += input.length;
   }
-  return 20 * Math.log10(Math.sqrt(sum/n) + 1e-10);
 }
 
 function beginTurn(){
   if (!session.active || turn.running) return;
-  if (!session.stream) { endSession(); return; }
-
-  turn.chunks = [];
-  var opts = {};
-  /* audio/mp4 first: it is the one iOS Safari supports. */
-  var cands = ['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg;codecs=opus'];
-  if (window.MediaRecorder && MediaRecorder.isTypeSupported){
-    for (var i=0;i<cands.length;i++){ if (MediaRecorder.isTypeSupported(cands[i])) { opts.mimeType = cands[i]; break; } }
-  }
-  try { turn.recorder = new MediaRecorder(session.stream, opts); }
-  catch(e){
-    try { turn.recorder = new MediaRecorder(session.stream); }
-    catch(e2){ showErr(errBox(), "This browser cannot record audio."); endSession(); return; }
-  }
-
-  turn.recorder.ondataavailable = function(ev){ if (ev.data && ev.data.size) turn.chunks.push(ev.data); };
-  turn.recorder.onstop = function(){
-    var blob = new Blob(turn.chunks, { type:(turn.recorder && turn.recorder.mimeType) || 'audio/mp4' });
-    var secs = (Date.now() - turn.startedAt)/1000;
-    turn.running = false;
-    if (turn.aborted) { turn.aborted = false; return; }
-    if (turn.noSpeech){
-      turn.noSpeech = false;
-      /* Nobody spoke. Keep the session alive and go round again rather than
-         dumping the learner back to a dead screen. */
-      if (session.active && session.continuous){ setHint('Still listening…'); beginTurn(); }
-      else { setHint(idleHint()); if (session.active) endSession(); }
-      return;
-    }
-    if (blob.size < 1200){
-      showErr(errBox(), "That was too short — speak a full sentence.");
-      if (session.active && session.continuous) beginTurn(); else endSession();
-      return;
-    }
-    dispatch(blob, secs);
-  };
-
-  turn.recorder.start();
-  turn.running = true;
+  if (!session.stream){ endSession(); return; }
+  turn.buffers = []; turn.samples = 0;
+  turn.aborted = false; turn.noSpeech = false;
+  turn.lastDb = -100;
   turn.startedAt = Date.now();
-  turn.aborted = false;
-  turn.noSpeech = false;
+  turn.capturing = true;
+  turn.running = true;
   paintMic();
   setHint('Listening… speak whenever you are ready');
   startVad();
@@ -733,9 +716,9 @@ function startVad(){
 
   stopVad();
   turn.vad = setInterval(function(){
-    if (!turn.running || !session.analyser) { stopVad(); return; }
+    if (!turn.running) { stopVad(); return; }
     elapsed += TICK_MS;
-    var db = levelDb();
+    var db = turn.lastDb;
 
     if (!calibrated){
       floorSamples.push(db);
@@ -750,36 +733,79 @@ function startVad(){
       return;
     }
 
-    var isSpeech = db > floorDb + SPEECH_MARGIN;
-    if (isSpeech){
+    if (db > floorDb + SPEECH_MARGIN){
       speechMs += TICK_MS;
       silenceMs = 0;
-      if (speechMs >= MIN_SPEECH && !sawSpeech){
-        sawSpeech = true;
-        setHint('I can hear you');
-      }
+      if (speechMs >= MIN_SPEECH && !sawSpeech){ sawSpeech = true; setHint('I can hear you'); }
     } else if (sawSpeech){
       silenceMs += TICK_MS;
-      if (silenceMs >= TRAIL_SILENCE){ stopVad(); stopTurn(); return; }
+      if (silenceMs >= TRAIL_SILENCE){ endTurn(); return; }
     } else {
       speechMs = Math.max(0, speechMs - TICK_MS);
     }
 
-    if (!sawSpeech && elapsed >= NO_SPEECH_STOP){
-      turn.noSpeech = true; stopVad(); stopTurn(); return;
-    }
-    if (elapsed >= MAX_TURN){ stopVad(); stopTurn(); return; }
+    if (!sawSpeech && elapsed >= NO_SPEECH_STOP){ turn.noSpeech = true; endTurn(); return; }
+    if (elapsed >= MAX_TURN_MS){ endTurn(); return; }
   }, TICK_MS);
 }
 
 function stopVad(){ if (turn.vad){ clearInterval(turn.vad); turn.vad = null; } }
 
-function stopTurn(aborted){
+function abortTurn(){
+  stopVad();
+  turn.capturing = false;
+  turn.running = false;
+  turn.buffers = []; turn.samples = 0;
+}
+
+function endTurn(){
   stopVad();
   if (!turn.running) return;
-  if (aborted) turn.aborted = true;
-  setHint(aborted ? idleHint() : 'Working…');
-  try { turn.recorder.stop(); } catch(e){ turn.running = false; }
+  turn.capturing = false;
+  turn.running = false;
+  var secs = (Date.now() - turn.startedAt)/1000;
+
+  if (turn.noSpeech){
+    turn.noSpeech = false;
+    /* Nobody spoke. Keep the session alive and go round again rather than
+       dumping the learner back to a dead screen. */
+    if (session.active && session.continuous){ setHint('Still listening…'); beginTurn(); }
+    else if (session.active) { endSession(); }
+    else setHint(idleHint());
+    return;
+  }
+
+  var pcm = mergePcm();
+  turn.buffers = []; turn.samples = 0;
+  if (pcm.length < session.rate * 0.4){
+    showErr(errBox(), "That was too short — speak a full sentence.");
+    if (session.active && session.continuous) beginTurn(); else endSession();
+    return;
+  }
+
+  setHint('Working…');
+  var wav = encodeWav(resampleTo16k(pcm, session.rate), 16000);
+  dispatch(wav, secs);
+}
+
+function mergePcm(){
+  var out = new Float32Array(turn.samples), at = 0;
+  for (var i=0;i<turn.buffers.length;i++){ out.set(turn.buffers[i], at); at += turn.buffers[i].length; }
+  return out;
+}
+
+/* Linear resample to the 16 kHz mono that speech models expect. */
+function resampleTo16k(pcm, srcRate){
+  if (!srcRate || Math.abs(srcRate/16000 - 1) < 0.01) return pcm;
+  var ratio = srcRate / 16000;
+  var outLen = Math.floor(pcm.length / ratio);
+  var out = new Float32Array(outLen);
+  for (var i=0;i<outLen;i++){
+    var pos = i*ratio, i0 = Math.floor(pos), frac = pos - i0;
+    var a = pcm[i0] || 0, b = (pcm[i0+1] === undefined) ? a : pcm[i0+1];
+    out[i] = a + (b-a)*frac;
+  }
+  return out;
 }
 
 function paintMic(){
@@ -807,34 +833,7 @@ function resumeAfterSpeech(){
   setHint('Speaking…');
 }
 
-/* ---- decode → mono 16 kHz → WAV → base64 ---- */
-function decode(arrayBuffer){
-  var Ctx = window.AudioContext || window.webkitAudioContext;
-  var ctx = new Ctx();
-  return new Promise(function(res, rej){
-    var done = function(b){ try { ctx.close(); } catch(e){} res(b); };
-    var fail = function(e){ try { ctx.close(); } catch(e2){} rej(new Error("I couldn't read that recording. Try again.")); };
-    var p = ctx.decodeAudioData(arrayBuffer, done, fail);
-    if (p && p.then) p.then(done).catch(fail);
-  });
-}
-
-function toMono16k(buf){
-  var chs = buf.numberOfChannels, len = buf.length, i, c;
-  var mono = new Float32Array(len);
-  for (c=0;c<chs;c++){ var d = buf.getChannelData(c); for (i=0;i<len;i++) mono[i] += d[i]/chs; }
-  var ratio = buf.sampleRate / 16000;
-  if (Math.abs(ratio-1) < 0.01) return mono;
-  var outLen = Math.floor(len / ratio);
-  var out = new Float32Array(outLen);
-  for (i=0;i<outLen;i++){
-    var pos = i*ratio, i0 = Math.floor(pos), frac = pos-i0;
-    var a = mono[i0] || 0, b = mono[i0+1] === undefined ? a : mono[i0+1];
-    out[i] = a + (b-a)*frac;
-  }
-  return out;
-}
-
+/* ---- PCM → WAV → base64 ---- */
 function encodeWav(samples, rate){
   var v = new DataView(new ArrayBuffer(44 + samples.length*2));
   function str(o,s){ for (var i=0;i<s.length;i++) v.setUint8(o+i, s.charCodeAt(i)); }
@@ -964,8 +963,19 @@ l1 ? ("The learner's first language is " + l1 + ". Expect the typical interferen
 "- fillers: filler sounds actually used (um, uh, er). Empty list if none.",
 "- pace_wpm: your best estimate of their speaking speed in words per minute.",
 "- encouragement: one short, specific, warm sentence naming something they actually did well.",
-"Be brief and never condescending."
-  ].filter(Boolean).join("\n");
+"Be brief and never condescending.",
+convo.length ? "" : null,
+convo.length ? "The conversation so far, oldest first:" : null
+  ].filter(function(x){ return x !== null && x !== undefined; })
+   .concat(convo.slice(-CONVO_TURNS).map(function(x){
+      return 'Student: "' + x.student + '"\nYou asked: "' + x.tutor + '"';
+   }))
+   .concat(convo.length
+     ? ["", "The audio is the student's answer to your last question. " +
+            "React to what they actually say and follow on from it. " +
+            "Do not repeat a question you have already asked."]
+     : [])
+   .filter(Boolean).join("\n");
 }
 
 function readPrompt(target){
@@ -1003,10 +1013,9 @@ function dispatch(blob, secs){
   return runTalk(blob, secs);
 }
 
-function prepare(blob){
-  return blob.arrayBuffer().then(decode)
-    .then(function(buf){ return toBase64(encodeWav(toMono16k(buf), 16000)); });
-}
+/* The capture path already produced a 16 kHz mono WAV, so this is only the
+   base64 step the API needs. */
+function prepare(blob){ return toBase64(blob); }
 
 function finish(spinner){
   busy = false;
@@ -1048,6 +1057,17 @@ function runTalk(blob, secs){
     });
     saveHist();
     recordMistakes(verified, d.transcript);
+
+    if (String(d.reply||'').trim()){
+      convo.push({ student:d.transcript, tutor:d.reply });
+      if (convo.length > CONVO_TURNS) convo.shift();
+      /* The prompt card becomes the tutor's question, so the next thing to do
+         is never ambiguous. */
+      $('promptLabel').textContent = 'Answer this';
+      $('promptText').textContent = d.reply;
+      $('newPrompt').textContent = 'Change the subject \u2192';
+    }
+
     renderTalk(d, verified, wpm, wc);
     refreshTabs();
   })
@@ -1536,7 +1556,12 @@ function boot(){
   setTab(tab);
 }
 
-function newPrompt(){ $('promptText').textContent = PROMPTS[Math.floor(Math.random()*PROMPTS.length)]; }
+function newPrompt(){
+  convo = [];
+  $('promptLabel').textContent = 'Try saying';
+  $('promptText').textContent = PROMPTS[Math.floor(Math.random()*PROMPTS.length)];
+  $('newPrompt').textContent = 'Give me another \u2192';
+}
 $('newPrompt').onclick = newPrompt;
 
 $('readNext').onclick = function(){
@@ -1570,7 +1595,7 @@ $('save2').onclick = function(){
 $('clearHist').onclick = function(){
   if (!window.confirm('Delete all your history and drills on this phone? This cannot be undone.')) return;
   history = []; cards = []; saveHist(); saveCards();
-  drillQueue = []; drillDone = 0;
+  drillQueue = []; drillDone = 0; convo = [];
   boot();
 };
 
