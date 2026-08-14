@@ -8,6 +8,17 @@ captures/
 local.properties
 .kotlin/
 
+# ---- Swift / Xcode ----
+# Note the leading dot: SwiftPM uses `.build`, which the `build/` rule above
+# does not match.
+.build/
+DerivedData/
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+*.ipa
+Payload/
+
 # ---- IDE ----
 .idea/
 *.hprof

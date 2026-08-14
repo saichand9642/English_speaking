@@ -161,6 +161,13 @@ before or after.
 **"You've hit today's free limit"** — The free tier resets. Wait a few minutes or come
 back tomorrow. Normal daily practice will not get near the limit.
 
+**"Google's servers are busy right now"** or *"this model is experiencing high demand"* —
+Nothing is wrong with your key, your phone, or your speaking. Google's free tier runs
+out of capacity in bursts, usually at peak hours. The app already retries twice and
+then tries a different model before giving up, so if you still see this, the outage is
+lasting more than about five seconds. Wait a minute and tap again, or set a different
+model in Settings.
+
 **Nothing happens when you tap record** — You opened the file directly instead of the
 `https://` link. The microphone needs the hosted address.
 

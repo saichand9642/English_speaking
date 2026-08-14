@@ -863,10 +863,30 @@ function toBase64(blob){
    ========================================================================= */
 var FALLBACKS = ['gemini-flash-latest','gemini-2.5-flash','gemini-2.0-flash'];
 
+/* Google's free tier returns 503 when a model is over capacity, which happens in
+   bursts at busy times of day. A hands-free conversation that dies on the first
+   blip is useless, so an overload is retried with backoff and then tried against
+   another model, which usually has spare capacity.
+
+   429 is deliberately NOT retried: that is your own quota, and hammering it
+   makes the situation worse rather than better. */
+var OVERLOAD_RETRIES = 2;
+var BACKOFF_MS = [1200, 3500];
+
+function wait(ms){ return new Promise(function(res){ setTimeout(res, ms); }); }
+
 function callGemini(b64, schema, prompt){
   var tried = [];
-  function attempt(mdl){
-    tried.push(mdl);
+
+  function nextModel(){
+    for (var i=0;i<FALLBACKS.length;i++){
+      if (tried.indexOf(FALLBACKS[i]) === -1) return FALLBACKS[i];
+    }
+    return null;
+  }
+
+  function attempt(mdl, retry){
+    if (tried.indexOf(mdl) === -1) tried.push(mdl);
     var url = "https://generativelanguage.googleapis.com/v1beta/models/" + encodeURIComponent(mdl) + ":generateContent";
     return fetch(url, {
       method:"POST",
@@ -877,14 +897,25 @@ function callGemini(b64, schema, prompt){
       })
     }).then(function(r){
       if (r.status === 404){
-        for (var i=0;i<FALLBACKS.length;i++){
-          if (tried.indexOf(FALLBACKS[i]) === -1) return attempt(FALLBACKS[i]);
+        var other = nextModel();
+        if (other) return attempt(other, 0);
+        return r;
+      }
+      if (r.status === 503 || r.status === 500 || r.status === 502){
+        if (retry < OVERLOAD_RETRIES){
+          setHint('Google is busy — retrying…');
+          return wait(BACKOFF_MS[retry] || 3500).then(function(){ return attempt(mdl, retry + 1); });
+        }
+        var spare = nextModel();
+        if (spare){
+          setHint('Trying another model…');
+          return attempt(spare, 0);
         }
       }
       return r;
     });
   }
-  return attempt(model);
+  return attempt(model, 0);
 }
 
 function readReply(r){
@@ -895,6 +926,8 @@ function readReply(r){
       if (r.status === 400 && /API key/i.test(m)) throw new Error("That API key was rejected. Tap the gear icon and paste it again.");
       if (r.status === 403) throw new Error("That API key was refused. Check it at aistudio.google.com/apikey.");
       if (r.status === 429) throw new Error("You've hit today's free limit. Try again in a few minutes.");
+      if (r.status === 503 || r.status === 500 || r.status === 502)
+        throw new Error("Google's servers are busy right now — nothing wrong with your key or your speaking. I tried a few times and another model. Wait a minute and tap again.");
       throw new Error(m);
     }
     var txt = j && j.candidates && j.candidates[0] && j.candidates[0].content
